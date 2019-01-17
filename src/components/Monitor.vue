@@ -1,24 +1,32 @@
 <template>
     <div class="monitor">
-        <History :statements="initialStatements"/>
+        <History :statements="statements"/>
+        <Input @input="handleInput"/>
     </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import Vue from 'vue';
 import History from '@/components/History.vue';
+import Input from '@/components/Input.vue';
 
-@Component({
+export default Vue.extend({
+    name: 'Monitor',
     components: {
         History,
+        Input,
     },
-})
-export default class Monitor extends Vue {
-    private initialStatements = [
-        'This is the first statement.',
-        'This is the second statement.',
-    ];
-}
+    data() {
+        return {
+            statements: ['Hello 1', 'Hello 2'],
+        };
+    },
+    methods: {
+        handleInput(statement: string) {
+            this.statements.push(statement);
+        },
+    },
+});
 
 </script>
 
