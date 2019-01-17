@@ -1,17 +1,23 @@
 <template>
     <div class="monitor">
-        <p>
-            This is the monitor.
-        </p>
+        <History :statements="statements"/>
     </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import History from '@/components/History.vue';
 
-@Component
+@Component({
+    components: {
+        History,
+    },
+})
 export default class Monitor extends Vue {
-
+    private statements = [
+        'This is the first statement.',
+        'This is the second statement.',
+    ];
 }
 
 </script>
