@@ -1,6 +1,6 @@
 <template>
     <div class="monitor">
-        <History :statements="statements"/>
+        <History :statements="initialStatements"/>
     </div>
 </template>
 
@@ -14,7 +14,7 @@ import History from '@/components/History.vue';
     },
 })
 export default class Monitor extends Vue {
-    private statements = [
+    private initialStatements = [
         'This is the first statement.',
         'This is the second statement.',
     ];

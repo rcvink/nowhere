@@ -12,6 +12,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class History extends Vue {
     @Prop() private statements!: string[];
+
+    public add(statement: string) {
+        this.statements.push(statement);
+    }
 }
 </script>
 
