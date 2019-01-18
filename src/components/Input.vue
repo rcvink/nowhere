@@ -1,8 +1,7 @@
 <template>
-    <div class="input">
+    <div>
         <form>
-            <input type="text" v-model="statement">
-            <input type="submit" v-on:click.prevent="handleSubmit">
+            <input class="input" type="text" v-model="statement" @keyup.enter="handleSubmit" @keydown.prevent>
         </form>
     </div>
 </template>
@@ -17,12 +16,6 @@ export default Vue.extend({
             this.$emit('input', this.statement);
         },
     },
-    props: {
-        display: {
-            default: undefined,
-            type: String,
-        },
-    },
     data() {
         return {
             statement: '',
@@ -34,7 +27,10 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .input {
+    background-color: rgb(0, 0, 0);
+    border: none;
     color: rgb(192, 192, 192);
+    float: left;
     text-align: left;
     text-transform: uppercase;
 }
