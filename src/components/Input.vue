@@ -1,7 +1,7 @@
 <template>
     <div>
         <form>
-            <input class="input" type="text" v-model="statement" @keyup.enter="handleSubmit" @keydown.prevent>
+            <input class="input" onsubmit="this.value=''" type="text" v-model="statement" @keyup.enter="handleSubmit" @keydown.enter.prevent>
         </form>
     </div>
 </template>
@@ -14,6 +14,7 @@ export default Vue.extend({
     methods: {
         handleSubmit() {
             this.$emit('input', this.statement);
+            this.statement = '';
         },
     },
     data() {
