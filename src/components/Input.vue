@@ -37,4 +37,8 @@ input[type=text] {
     text-align: left;
     text-transform: uppercase;
 }
+
+input:focus {
+    outline: none;
+}
 </style>
