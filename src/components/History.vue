@@ -1,6 +1,9 @@
 <template>
     <div class="history">
-        <li class="list" v-for="statement in statements" :key="statement">
+        <li 
+            class="list" 
+            :key="statement"
+            v-for="statement in statements">
             C:\>{{ statement }}
         </li>
     </div>

@@ -1,7 +1,12 @@
 <template>
     <div>
         <form>
-            C:\><input type="text" v-model="statement" v-on:keydown.enter="handleSubmit" v-on:keydown.enter.prevent v-on:blur="this.focus()">
+            C:\><input 
+                type="text" 
+                v-model="statement" 
+                v-on:keydown.enter="handleSubmit" 
+                v-on:keydown.enter.prevent 
+                v-on:blur="this.focus()">
         </form>
     </div>
 </template>
