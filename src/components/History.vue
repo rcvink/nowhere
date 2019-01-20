@@ -13,13 +13,13 @@ export default Vue.extend({
     name: 'History',
     methods: {
         add(statement: string) {
-            this.statements.push(statement);
+            this.$props.statements.push(statement);
         },
     },
-    data() {
-        return {
-            statements: [] as string[],
-        };
+    props: {
+        statements: {
+            type: Array,
+        },
     },
 });
 </script>
