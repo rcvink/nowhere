@@ -7,16 +7,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import Vue from 'vue';
 
-@Component
-export default class History extends Vue {
-    @Prop() private statements!: string[];
-
-    public add(statement: string) {
-        this.statements.push(statement);
-    }
-}
+export default Vue.extend({
+    name: 'History',
+    methods: {
+        add(statement: string) {
+            this.statements.push(statement);
+        },
+    },
+    data() {
+        return {
+            statements: [] as string[],
+        };
+    },
+});
 </script>
 
 <style scoped lang="scss">
