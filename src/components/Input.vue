@@ -1,7 +1,7 @@
 <template>
-    <div class="input">
+    <div>
         <form>
-            <input type="text" v-model="statement" v-on:keydown.enter="handleSubmit" v-on:keydown.enter.prevent>
+            <input type="text" v-model="statement" v-on:keydown.enter="handleSubmit" v-on:keydown.enter.prevent v-on:blur="this.focus()">
         </form>
     </div>
 </template>
@@ -18,7 +18,7 @@ export default Vue.extend({
         },
         clearStatement() {
             this.statement = '';
-        }
+        },
     },
     data() {
         return {
@@ -30,7 +30,9 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.input {
+input[type=text] {
+    background-color: black;
+    border: none;
     color: rgb(192, 192, 192);
     text-align: left;
     text-transform: uppercase;
