@@ -1,7 +1,7 @@
 <template>
     <div class="history">
         <li class="list" v-for="statement in statements" :key="statement">
-            {{ statement }}
+            C:\>{{ statement }}
         </li>
     </div>
 </template>
@@ -20,10 +20,14 @@ export default class History extends Vue {
 </script>
 
 <style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
 .history {
     color: rgb(192, 192, 192);
+    font-size: 1.5em;
     text-align: left;
     text-transform: uppercase;
+    font-family: 'VT323', monospace;
 }
 
 .list {
