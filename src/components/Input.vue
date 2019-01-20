@@ -36,6 +36,7 @@ input[type=text] {
     color: rgb(192, 192, 192);
     text-align: left;
     text-transform: uppercase;
+    font-size: 1em;
 }
 
 input:focus {
