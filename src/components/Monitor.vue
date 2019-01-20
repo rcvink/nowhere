@@ -1,6 +1,6 @@
 <template>
     <div class="monitor">
-        <History :statements="statements"/>
+        <History :initialStatements="statements"/>
         <Input class="input" @input="handleInput"/>
     </div>
 </template>

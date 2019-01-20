@@ -11,16 +11,17 @@ import Vue from 'vue';
 
 export default Vue.extend({
     name: 'History',
+    data() {
+       return {
+           statements: this.initialStatements,
+       };
+    },
     methods: {
-        add(statement: string) {
-            this.$props.statements.push(statement);
+        add(statement: string): void {
+            this.statements.push(statement);
         },
     },
-    props: {
-        statements: {
-            type: Array,
-        },
-    },
+    props: ['initialStatements'],
 });
 </script>
 
