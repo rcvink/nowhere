@@ -1,29 +1,42 @@
 <template>
     <div class="history">
-        <li class="list" v-for="statement in statements" :key="statement">
-            {{ statement }}
+        <li 
+            class="list" 
+            :key="statement"
+            v-for="statement in statements">
+            C:\>{{ statement }}
         </li>
     </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import Vue from 'vue';
 
-@Component
-export default class History extends Vue {
-    @Prop() private statements!: string[];
-
-    public add(statement: string) {
-        this.statements.push(statement);
-    }
-}
+export default Vue.extend({
+    name: 'History',
+    data() {
+       return {
+           statements: this.initialStatements,
+       };
+    },
+    methods: {
+        add(statement: string): void {
+            this.statements.push(statement);
+        },
+    },
+    props: ['initialStatements'],
+});
 </script>
 
 <style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
 .history {
     color: rgb(192, 192, 192);
+    font-size: 1.5em;
     text-align: left;
     text-transform: uppercase;
+    font-family: 'VT323', monospace;
 }
 
 .list {

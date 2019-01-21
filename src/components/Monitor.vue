@@ -1,7 +1,9 @@
 <template>
     <div class="monitor">
-        <History :statements="statements"/>
-        <Input @input="handleInput"/>
+        <History :initialStatements="statements"/>
+        <Input 
+            class="input" 
+            @input="handleInput"/>
     </div>
 </template>
 
@@ -34,6 +36,10 @@ export default Vue.extend({
 .monitor {
     background-color: rgb(0, 0, 0);
     width: 100%;
-    height: 1080px;
+    height: 720px;
+}
+
+.input {
+    float: left;
 }
 </style>
