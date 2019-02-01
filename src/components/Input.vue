@@ -5,8 +5,7 @@
                 type="text" 
                 v-model="statement" 
                 v-on:keydown.enter="handleSubmit" 
-                v-on:keydown.enter.prevent 
-                v-on:blur="this.focus()">
+                v-on:keydown.enter.prevent>
         </form>
     </div>
 </template>
@@ -51,9 +50,5 @@ input[type=text] {
     text-align: left;
     text-transform: uppercase;
     font-size: 1em;
-}
-
-input:focus {
-    outline: none;
 }
 </style>
