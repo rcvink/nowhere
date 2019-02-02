@@ -20,7 +20,7 @@ export default Vue.extend({
     },
     data() {
         return {
-            statements: ['Hello 1', 'Hello 2'],
+            statements: ['Nowhere'],
         };
     },
     methods: {
