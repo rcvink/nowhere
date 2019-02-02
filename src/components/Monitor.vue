@@ -11,6 +11,7 @@
 import Vue from 'vue';
 import History from '@/components/History.vue';
 import Input from '@/components/Input.vue';
+import Story from '@/static/story.json';
 
 export default Vue.extend({
     name: 'Monitor',
