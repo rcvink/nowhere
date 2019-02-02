@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form class="form container">
+        <div class="form container">
             <div class="leading-child">
                 C:\>
             </div>
@@ -11,7 +11,7 @@
                 v-model="statement" 
                 v-on:keydown.enter="handleSubmit" 
                 v-on:keydown.enter.prevent>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -45,6 +45,7 @@ export default Vue.extend({
     font-family: 'VT323', monospace;
     color: rgb(192, 192, 192);
     font-size: 1.5em;
+    height: 100%;
 }
 
 .input {
@@ -53,6 +54,7 @@ export default Vue.extend({
     color: rgb(192, 192, 192);
     cursor: crosshair;
     font-family: 'VT323', monospace;
+    height: 100%;
     text-align: left;
     text-transform: uppercase;
     font-size: 1em;
