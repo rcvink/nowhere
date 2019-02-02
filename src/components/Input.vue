@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="form container">
+        <div class="form container form-child">
             <div class="leading-child">
                 C:\>
             </div>
@@ -64,7 +64,12 @@ export default Vue.extend({
     display: flex;
 }
 
+.form-child {
+    flex-grow: 1000;
+}
+
 .input-child {
     flex-grow: 1000;
+    height: 100%;
 }
 </style>

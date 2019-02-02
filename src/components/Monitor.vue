@@ -1,8 +1,8 @@
 <template>
-    <div class="monitor container">
+    <div class="monitor-container container monitor">
         <History class="history-child" :initialStatements="statements"/>
         <Input 
-            class="input-child" 
+            class="input-child container input-container" 
             @input="handleInput"/>
     </div>
 </template>
@@ -40,10 +40,17 @@ export default Vue.extend({
     cursor: crosshair;
 }
 
-.container {
-    display: flex;
+.monitor-container {
     flex-direction: column;
     justify-content: flex-start;
+}
+
+.container {
+    display: flex;
+}
+
+.input-container {
+    flex-direction: column;
 }
 
 .input-child {
