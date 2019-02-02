@@ -36,7 +36,7 @@ export default Vue.extend({
 .monitor {
     background-color: rgb(0, 0, 0);
     width: 100%;
-    height: 90%;
+    height: 100%;
     cursor: crosshair;
 }
 

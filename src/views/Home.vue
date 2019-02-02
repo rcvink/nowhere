@@ -15,3 +15,9 @@ import Monitor from '@/components/Monitor.vue';
 })
 export default class Home extends Vue {}
 </script>
+
+<style lang="scss" scoped>
+.home {
+  height: 100%
+}
+</style>
