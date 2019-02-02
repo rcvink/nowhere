@@ -1,7 +1,12 @@
 <template>
     <div>
-        <form>
-            C:\><input 
+        <form class="form container">
+            <div class="c-child">
+                C:\>
+            </div>
+            <input 
+                autofocus="true"
+                class="input input-child"
                 type="text" 
                 v-model="statement" 
                 v-on:keydown.enter="handleSubmit" 
@@ -36,19 +41,24 @@ export default Vue.extend({
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css?family=VT323');
 
-form {
+.form {
     font-family: 'VT323', monospace;
     color: rgb(192, 192, 192);
     font-size: 1.5em;
 }
 
-input[type=text] {
+.input {
     background-color: black;
     border: none;
     color: rgb(192, 192, 192);
+    cursor: crosshair;
     font-family: 'VT323', monospace;
     text-align: left;
     text-transform: uppercase;
     font-size: 1em;
+}
+
+.container {
+    display: flex;
 }
 </style>
