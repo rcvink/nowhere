@@ -1,7 +1,7 @@
 <template>
     <div>
         <form class="form container">
-            <div class="c-child">
+            <div class="leading-child">
                 C:\>
             </div>
             <input 
@@ -60,5 +60,9 @@ export default Vue.extend({
 
 .container {
     display: flex;
+}
+
+.input-child {
+    flex-grow: 1000;
 }
 </style>
