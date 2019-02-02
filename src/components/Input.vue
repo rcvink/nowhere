@@ -4,13 +4,14 @@
             <div class="leading-child">
                 C:\>
             </div>
-            <input 
+            <textarea 
                 autofocus="true"
                 class="input input-child"
                 type="text" 
                 v-model="statement" 
                 v-on:keydown.enter="handleSubmit" 
                 v-on:keydown.enter.prevent>
+            </textarea>
         </div>
     </div>
 </template>
@@ -55,6 +56,7 @@ export default Vue.extend({
     cursor: crosshair;
     font-family: 'VT323', monospace;
     height: 100%;
+    outline: none;
     text-align: left;
     text-transform: uppercase;
     font-size: 1em;
