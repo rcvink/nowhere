@@ -1,8 +1,8 @@
 <template>
-    <div class="monitor">
-        <History :initialStatements="statements"/>
+    <div class="monitor container">
+        <History class="history-child" :initialStatements="statements"/>
         <Input 
-            class="input" 
+            class="input-child" 
             @input="handleInput"/>
     </div>
 </template>
@@ -36,10 +36,21 @@ export default Vue.extend({
 .monitor {
     background-color: rgb(0, 0, 0);
     width: 100%;
-    height: 720px;
+    height: 90%;
+    cursor: crosshair;
 }
 
-.input {
-    float: left;
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.input-child {
+    flex-grow: 1000;
+}
+
+.history-child {
+    flex-grow: 1
 }
 </style>
