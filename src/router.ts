@@ -16,7 +16,7 @@ export default new Router({
     {
       path: '/index',
       redirect: '/',
-    }
+    },
     {
       path: '/about',
       name: 'about',
