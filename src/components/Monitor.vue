@@ -13,6 +13,7 @@ import History from '@/components/History.vue';
 import Input from '@/components/Input.vue';
 import SceneFactory from '@/factories/SceneFactory';
 import IScene from '@/models/IScene';
+import ICommand from '@/models/ICommand';
 
 export default Vue.extend({
     name: 'Monitor',
@@ -22,7 +23,7 @@ export default Vue.extend({
     },
     created() {
         this.scenes = this.sceneFactory.create();
-        this.addToStatements(this.currentScene.text);
+        this.addToHistory(this.currentScene.text);
     },
     data() {
         return {
@@ -34,11 +35,27 @@ export default Vue.extend({
     },
     methods: {
         handleInput(statement: string) {
-            this.addToStatements(statement);
+            this.addToHistory(statement);
+            if (this.isInputValid(statement)) {
+                const command = this.getCommand(statement);
+                if (command !== undefined) {
+                    this.incrementId(command.goTo);
+                    this.addToHistory(this.currentScene.text);
+                }
+            }
         },
-        addToStatements(statement: string) {
+        addToHistory(statement: string) {
             this.statements.push(statement);
         },
+        isInputValid(statement: string) {
+            return this.currentScene.commands.map((command) => command.input).includes(statement.toLowerCase());
+        },
+        incrementId(newId: number) {
+            this.currentId = newId;
+        },
+        getCommand(statement: string) {
+            return this.currentScene.commands.find((command) => command.input == statement.toLowerCase());
+        }
     },
     computed: {
         currentScene(): IScene {
