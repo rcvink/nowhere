@@ -19,11 +19,6 @@ export default Vue.extend({
            statements: this.initialStatements,
        };
     },
-    methods: {
-        add(statement: string): void {
-            this.statements.push(statement);
-        },
-    },
     props: ['initialStatements'],
 });
 </script>
