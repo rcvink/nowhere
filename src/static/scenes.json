@@ -138,25 +138,367 @@
         "commands": [
             {
                 "input": "leave phone",
-                "goTo": 0,
+                "goTo": 40,
                 "sounds": [
-                    "footstepsanddooropening.mp3"
                 ]
             },
             {
                 "input": "pick up phone",
-                "goTo": 0,
+                "goTo": 41,
                 "sounds": [
                     "pickingupphone.mp3"
                 ]
             },
             {
                 "input": "swear",
-                "goTo": 0,
+                "goTo": 42,
                 "sounds": [
                     "swear1.mp3"
                 ]
             }
+        ]
+    },
+    {
+        "id": 40,
+        "text": "You leave your phone.",
+        "commands": [
+            {
+                "input": "exit cafe",
+                "goTo": 100,
+                "sounds": [
+                    "footstepsanddooropening.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 41,
+        "text": "You collect your phone.",
+        "commands": [
+            {
+                "input": "exit cafe",
+                "goTo": 100,
+                "sounds": [
+                    "footstepsanddooropening.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 42,
+        "text": "#!@#.",
+        "commands": [
+            {
+                "input": "exit cafe",
+                "goTo": 100,
+                "sounds": [
+                    "footstepsanddooropening.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 100,
+        "text": "You're standing in the street.",
+        "commands": [
+            {
+                "input": "park",
+                "goTo": 200,
+                "sounds": [
+                    "walkingtopark.mp3"
+                ]
+            },
+            {
+                "input": "home",
+                "goTo": 300,
+                "sounds": [
+                    "walkinghome.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 200,
+        "text": "You're in the park.",
+        "commands": [
+            {
+                "input": "bench",
+                "goTo": 201,
+                "sounds": [
+                    "walktobench.mp3"
+                ]
+            },
+            {
+                "input": "other side",
+                "goTo": 210,
+                "sounds": [
+                    "walkingthroughpark.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 201,
+        "text": "You are sat in the corner of a park.",
+        "commands": [
+            {
+                "input": "stay",
+                "goTo": 201,
+                "sounds": [
+                ]
+            },
+            {
+                "input": "home",
+                "goTo": 300,
+                "sounds": [
+                    "walkinghome.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 210,
+        "text": "There is a person walking towards you from the other side of the park.",
+        "commands": [
+            {
+                "input": "continue",
+                "goTo": 211,
+                "sounds": [
+                    "walkingthroughpark.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 211,
+        "text": "They are closer.",
+        "commands": [
+            {
+                "input": "continue",
+                "goTo": 212,
+                "sounds": [
+                    "ambientparknoise.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 212,
+        "text": "\"Hey\"",
+        "commands": [
+            {
+                "input": "respond",
+                "goTo": 220,
+                "sounds": [
+                    "howsitgoing.mp3"
+                ]
+            },
+            {
+                "input": "say nothing",
+                "goTo": 221,
+                "sounds": [
+                    "hello?.mp3"
+                ]
+            },
+            {
+                "input": "what?",
+                "goTo": 222,
+                "sounds": [
+                    "isaidheyhowsitgoing.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 220,
+        "text": "\"Not bad, how are you?\"",
+        "commands": [
+            {
+                "input": "respond",
+                "goTo": 230,
+                "sounds": [
+                    "LOOPyeahimgoodstuffhappened.mp3"
+                ]
+            },
+            {
+                "input": "say nothing",
+                "goTo": 231,
+                "sounds": [
+                    "areyouokay.mp3"
+                ]
+            },
+            {
+                "input": "what?",
+                "goTo": 222,
+                "sounds": [
+                    "ISAIDHOWSITGOINGLOUD.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 221,
+        "text": "\"...\"",
+        "commands": [
+            {
+                "input": "respond",
+                "goTo": 220,
+                "sounds": [
+                    "howsitgoing.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 222,
+        "text": "\"I said, hey\"",
+        "commands": [
+            {
+                "input": "respond",
+                "goTo": 220,
+                "sounds": [
+                    "howsitgoing.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 230,
+        "text": "\"Sounds good man, I really should be going.\"",
+        "commands": [
+            {
+                "input": "say nothing",
+                "goTo": 240,
+                "sounds": [
+                    "byethen.mp3"
+                ]
+            },
+            {
+                "input": "what?",
+                "goTo": 240,
+                "sounds": [
+                    "byethen.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 240,
+        "text": "You continue on your path until you find a nice place to sit.",
+        "commands": [
+            {
+                "input": "sit",
+                "goTo": 201,
+                "sounds": [
+                    "walkingthroughpark2.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 300,
+        "text": "You are heading home.",
+        "commands": [
+            {
+                "input": "quiet route",
+                "goTo": 400,
+                "sounds": [
+                    "quietroute.mp3"
+                ]
+            },
+            {
+                "input": "main route",
+                "goTo": 400,
+                "sounds": [
+                    "mainroad.mp3"
+                ]
+            },
+            {
+                "input": "taxi",
+                "goTo": 301,
+                "sounds": [
+                    "dialtonehellotaxiservice.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 301,
+        "text": "\"Where are you?\"",
+        "commands": [
+            {
+                "input": "nowhere",
+                "goTo": 400,
+                "sounds": [
+                    "taxi.mp3"
+                ]
+            },
+            {
+                "input": "what?",
+                "goTo": 301,
+                "sounds": [
+                ]
+            },
+            {
+                "input": "hang up",
+                "goTo": 302,
+                "sounds": [
+                    "click.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 302,
+        "text": "You are heading home.",
+        "commands": [
+            {
+                "input": "quiet route",
+                "goTo": 400,
+                "sounds": [
+                    "quietroute.mp3"
+                ]
+            },
+            {
+                "input": "main route",
+                "goTo": 400,
+                "sounds": [
+                    "mainroad.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 400,
+        "text": "You are outside your house.",
+        "commands": [
+            {
+                "input": "tap front pocket",
+                "goTo": 400,
+                "sounds": [
+                    "frontpockettap.mp3"
+                ]
+            },
+            {
+                "input": "tap back pocket",
+                "goTo": 401,
+                "sounds": [
+                    "backpockettapjanglykeyswalkingtofrontdoorandunlockingit.mp3"
+                ]
+            },
+            {
+                "input": "tap coat pocket",
+                "goTo": 400,
+                "sounds": [
+                    "coatpockettap.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 401,
+        "text": "The end.",
+        "commands": [
         ]
     }
 ]
