@@ -44,6 +44,9 @@ export default Vue.extend({
                     this.addStatementToHistory(this.currentScene.text);
                     this.addStatementToHistory(this.parsedCommandTexts);
                 }
+            } else {
+                this.addStatementToHistory(this.currentScene.text);
+                this.addStatementToHistory(this.parsedCommandTexts);
             }
         },
         addStatementToHistory(statement: string) {
