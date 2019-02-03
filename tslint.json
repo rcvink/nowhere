@@ -6,7 +6,7 @@
   "linterOptions": {
     "exclude": [
       "node_modules/**",
-      "src/static/story.json"
+      "src/static/scenes.json"
     ]
   },
   "rules": {
