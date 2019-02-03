@@ -14,6 +14,7 @@ import Input from '@/components/Input.vue';
 import SceneFactory from '@/factories/SceneFactory';
 import IScene from '@/models/IScene';
 import ICommand from '@/models/ICommand';
+import Scene from '@/models/Scene';
 
 export default Vue.extend({
     name: 'Monitor',
@@ -64,7 +65,11 @@ export default Vue.extend({
     },
     computed: {
         currentScene(): IScene {
-            return this.scenes[this.currentId];
+            const currentScene = this.scenes.find((scene) => scene.id === this.currentId);
+            if (currentScene !== undefined) {
+                return currentScene;
+            }
+            return new Scene(999, [], '');
         },
         commandTexts(): string[] {
             return this.currentScene.commands.map((x) => x.input);
