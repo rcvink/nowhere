@@ -41,7 +41,7 @@
             },
             {
                 "input": "read book",
-                "goTo": 1,
+                "goTo": 20,
                 "sounds": [
                     "bookopening.mp3",
                     "pageturning.mp3"
@@ -49,7 +49,7 @@
             },
             {
                 "input": "exit cafe",
-                "goTo": 5,
+                "goTo": 30,
                 "sounds": [
                     "footstepstodoor.mp3",
                     "phonedrop.mp3"
@@ -100,7 +100,7 @@
     },
     {
         "id": 22,
-        "text": " The soft-bodied subimagos are very attractive to predators. Synchronous emergence is probably an adaptive strategy that reduces the individual's risk of being eaten. The lifespan of an adult mayfly is very short, varying with the species. The primary function of the adult is reproduction; adults do not feed, and have only vestigial (unusable) mouthparts, while their digestive systems are filled with air. Dolania americana has the shortest adult lifespan of any mayfly: the adult females of the species live for less than five minutes.",
+        "text": "The soft-bodied subimagos are very attractive to predators. Synchronous emergence is probably an adaptive strategy that reduces the individual's risk of being eaten. The lifespan of an adult mayfly is very short, varying with the species. The primary function of the adult is reproduction; adults do not feed, and have only vestigial (unusable) mouthparts, while their digestive systems are filled with air. Dolania americana has the shortest adult lifespan of any mayfly: the adult females of the species live for less than five minutes.",
         "commands": [
             {
                 "input": "close book",
