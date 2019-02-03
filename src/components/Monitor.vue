@@ -22,12 +22,13 @@ export default Vue.extend({
         Input,
     },
     created() {
-        const sceneFactory = new SceneFactory();
-        this.scenes = sceneFactory.create();
-        this.statements.push(this.scenes[0].text);
+        this.scenes = this.sceneFactory.create();
+        this.addToStatements(this.currentScene.text);
     },
     data() {
         return {
+            currentId: 0,
+            sceneFactory: new SceneFactory(),
             scenes: [] as IScene[],
             scenesJson: scenesJson,
             statements: [] as string[],
@@ -35,7 +36,15 @@ export default Vue.extend({
     },
     methods: {
         handleInput(statement: string) {
+            this.addToStatements(statement);
+        },
+        addToStatements(statement: string) {
             this.statements.push(statement);
+        },
+    },
+    computed: {
+        currentScene(): IScene {
+            return this.scenes[this.currentId];
         },
     },
 });
