@@ -11,10 +11,9 @@
 import Vue from 'vue';
 import History from '@/components/History.vue';
 import Input from '@/components/Input.vue';
-import SceneFactory from '@/factories/SceneFactory';
 import IScene from '@/models/IScene';
 import ICommand from '@/models/ICommand';
-import Scene from '@/models/Scene';
+import scenes from '@/static/scenes.json';
 
 export default Vue.extend({
     name: 'Monitor',
@@ -23,15 +22,13 @@ export default Vue.extend({
         Input,
     },
     created() {
-        this.scenes = this.sceneFactory.create();
         this.addStatementToHistory(this.currentScene.text);
         this.addStatementToHistory(this.parsedCommandTexts);
     },
     data() {
         return {
+            scenes: scenes as IScene[],
             currentId: 0,
-            sceneFactory: new SceneFactory(),
-            scenes: [] as IScene[],
             statements: [] as string[],
         };
     },
@@ -65,11 +62,7 @@ export default Vue.extend({
     },
     computed: {
         currentScene(): IScene {
-            const currentScene = this.scenes.find((scene) => scene.id === this.currentId);
-            if (currentScene !== undefined) {
-                return currentScene;
-            }
-            return new Scene(999, [], '');
+            return this.scenes.find((scene) => scene.id === this.currentId) || this.scenes[0];
         },
         commandTexts(): string[] {
             return this.currentScene.commands.map((x) => x.input);
