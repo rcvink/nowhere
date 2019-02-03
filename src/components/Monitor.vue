@@ -11,7 +11,6 @@
 import Vue from 'vue';
 import History from '@/components/History.vue';
 import Input from '@/components/Input.vue';
-import scenesJson from '@/static/scenes.json';
 import SceneFactory from '@/factories/SceneFactory';
 import IScene from '@/models/IScene';
 
@@ -30,7 +29,6 @@ export default Vue.extend({
             currentId: 0,
             sceneFactory: new SceneFactory(),
             scenes: [] as IScene[],
-            scenesJson: scenesJson,
             statements: [] as string[],
         };
     },
