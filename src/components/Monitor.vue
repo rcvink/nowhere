@@ -54,8 +54,8 @@ export default Vue.extend({
             this.currentId = newId;
         },
         getCommand(statement: string) {
-            return this.currentScene.commands.find((command) => command.input == statement.toLowerCase());
-        }
+            return this.currentScene.commands.find((command) => command.input === statement.toLowerCase());
+        },
     },
     computed: {
         currentScene(): IScene {
