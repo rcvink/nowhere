@@ -23,7 +23,8 @@ export default Vue.extend({
     },
     created() {
         this.scenes = this.sceneFactory.create();
-        this.addToHistory(this.currentScene.text);
+        this.addStatementToHistory(this.currentScene.text);
+        this.addStatementToHistory(this.parsedCommandTexts);
     },
     data() {
         return {
@@ -35,20 +36,21 @@ export default Vue.extend({
     },
     methods: {
         handleInput(statement: string) {
-            this.addToHistory(statement);
+            this.addStatementToHistory(statement);
             if (this.isInputValid(statement)) {
-                const command = this.getCommand(statement);
-                if (command !== undefined) {
-                    this.incrementId(command.goTo);
-                    this.addToHistory(this.currentScene.text);
+                const inputCommand = this.getCommand(statement);
+                if (inputCommand !== undefined) {
+                    this.incrementId(inputCommand.goTo);
+                    this.addStatementToHistory(this.currentScene.text);
+                    this.addStatementToHistory(this.parsedCommandTexts);
                 }
             }
         },
-        addToHistory(statement: string) {
+        addStatementToHistory(statement: string) {
             this.statements.push(statement);
         },
         isInputValid(statement: string) {
-            return this.currentScene.commands.map((command) => command.input).includes(statement.toLowerCase());
+            return this.commandTexts.includes(statement.toLowerCase());
         },
         incrementId(newId: number) {
             this.currentId = newId;
@@ -60,6 +62,12 @@ export default Vue.extend({
     computed: {
         currentScene(): IScene {
             return this.scenes[this.currentId];
+        },
+        commandTexts(): string[] {
+            return this.currentScene.commands.map((x) => x.input);
+        },
+        parsedCommandTexts(): string {
+            return this.commandTexts.join(' | ');
         },
     },
 });
