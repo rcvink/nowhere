@@ -5,7 +5,36 @@
         "commands": [
             {
                 "input": "sip drink",
-                "goTo": 0,
+                "goTo": 10,
+                "sounds": [
+                    "sipdrink.mp3"
+                ]
+            },
+            {
+                "input": "read book",
+                "goTo": 20,
+                "sounds": [
+                    "bookopening.mp3",
+                    "pageturning.mp3"
+                ]
+            },
+            {
+                "input": "exit cafe",
+                "goTo": 30,
+                "sounds": [
+                    "footstepstodoor.mp3",
+                    "phonedrop.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "text": "You sip your drink.",
+        "commands": [
+            {
+                "input": "sip drink",
+                "goTo": 10,
                 "sounds": [
                     "sipdrink.mp3"
                 ]
@@ -29,7 +58,7 @@
         ]
     },
     {
-        "id": 1,
+        "id": 20,
         "text": "The final moult of the nymph is not to the full adult form, but to a winged stage called a subimago that physically resembles the adult, although it is usually sexually immature and duller in colour. The subimago often has partially cloudy wings fringed with minute hairs; its eyes, legs and genitalia are not fully developed. Subimagos are generally poor fliers, and typically lack the colour patterns used to attract mates. After a period, usually lasting one or two days but in some species only a few minutes, the subimago moults to the full adult form, making mayflies the only insects in which a winged form undergoes a further moult.",
         "commands": [
             {
@@ -41,7 +70,7 @@
             },
             {
                 "input": "read more",
-                "goTo": 2,
+                "goTo": 21,
                 "sounds": [
                     "pageturning.mp3",
                     "casiowatchbeep.mp3"
@@ -50,7 +79,7 @@
         ]
     },
     {
-        "id": 2,
+        "id": 21,
         "text": "Often, all the mayflies in a population mature at once (a hatch), and for a couple of days in the spring or autumn, mayflies are everywhere, dancing around each other in large groups, or resting on every available surface. In many species the emergence is synchronised with dawn or dusk, and light intensity seems to be an important cue for emergence, but other factors may also be involved. Baetis intercalaris, for example, usually emerges just after sunset in July and August, but in one year, a large hatch was observed at midday in June.",
         "commands": [
             {
@@ -62,7 +91,7 @@
             },
             {
                 "input": "read more",
-                "goTo": 3,
+                "goTo": 22,
                 "sounds": [
                     "pageturning.mp3"
                 ]
@@ -70,7 +99,7 @@
         ]
     },
     {
-        "id": 3,
+        "id": 22,
         "text": " The soft-bodied subimagos are very attractive to predators. Synchronous emergence is probably an adaptive strategy that reduces the individual's risk of being eaten. The lifespan of an adult mayfly is very short, varying with the species. The primary function of the adult is reproduction; adults do not feed, and have only vestigial (unusable) mouthparts, while their digestive systems are filled with air. Dolania americana has the shortest adult lifespan of any mayfly: the adult females of the species live for less than five minutes.",
         "commands": [
             {
@@ -82,7 +111,7 @@
             },
             {
                 "input": "read more",
-                "goTo": 4,
+                "goTo": 23,
                 "sounds": [
                     "pageturning.mp3"
                 ]
@@ -90,7 +119,7 @@
         ]
     },
     {
-        "id": 4,
+        "id": 23,
         "text": "Male adults may patrol individually, but most congregate in swarms a few metres above water with clear open sky above it, and perform a nuptial (courtship) dance. Each insect has a characteristic up-and-down pattern of movement; strong wingbeats propel it upwards and forwards with the tail sloping down; when it stops moving its wings, it falls passively with the abdomen tilted upwards. Females fly into these swarms, and mating takes place in the air. A rising male clasps the thorax of a female from below using his front legs bent upwards, and inseminates her. Copulation may last just a few seconds, but occasionally a pair remains in tandem and flutters to the ground. Males may spend the night in vegetation and return to the nuptial dance the following day. Although they do not feed, some briefly touch the surface to drink a little water before flying off.",
         "commands": [
             {
@@ -104,7 +133,7 @@
         ]
     },
     {
-        "id": 5,
+        "id": 30,
         "text": "You drop your phone.",
         "commands": [
             {
