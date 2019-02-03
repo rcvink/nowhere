@@ -2,8 +2,8 @@
     <div class="history">
         <li 
             class="list" 
-            :key="statement"
-            v-for="statement in statements">
+            :key="index"
+            v-for="(statement, index) in statements">
             C:\>{{ statement }}
         </li>
     </div>
