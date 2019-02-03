@@ -11,7 +11,9 @@
 import Vue from 'vue';
 import History from '@/components/History.vue';
 import Input from '@/components/Input.vue';
-import Story from '@/static/story.json';
+import scenesJson from '@/static/scenes.json';
+import SceneFactory from '@/factories/SceneFactory';
+import IScene from '@/models/IScene';
 
 export default Vue.extend({
     name: 'Monitor',
@@ -19,9 +21,16 @@ export default Vue.extend({
         History,
         Input,
     },
+    created() {
+        const sceneFactory = new SceneFactory();
+        this.scenes = sceneFactory.create();
+        this.statements.push(this.scenes[0].text);
+    },
     data() {
         return {
-            statements: ['Nowhere'],
+            scenes: [] as IScene[],
+            scenesJson: scenesJson,
+            statements: [] as string[],
         };
     },
     methods: {
