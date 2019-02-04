@@ -58,7 +58,6 @@ export default Vue.extend({
     height: 100%;
     outline: none;
     text-align: left;
-    text-transform: uppercase;
     font-size: 1em;
 }
 

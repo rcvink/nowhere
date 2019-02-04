@@ -30,7 +30,6 @@ export default Vue.extend({
     color: rgb(192, 192, 192);
     font-size: 1.5em;
     text-align: left;
-    text-transform: uppercase;
     font-family: 'VT323', monospace;
 }
 
