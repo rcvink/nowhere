@@ -5,10 +5,7 @@ import './registerServiceWorker';
 
 Vue.config.productionTip = false;
 
-const vue = new Vue({
+new Vue({
   router,
   render: (h) => h(App),
-});
-
-Vue.use(VueResource);
-vue.$mount('#app');
+}).$mount('#app');
