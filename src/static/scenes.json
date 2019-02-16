@@ -1,7 +1,7 @@
 [
     {
         "id": 0,
-        "text": "You are sitting in a cafe.",
+        "text": "You are not sitting in a cafe.",
         "commands": [
             {
                 "input": "sip drink",
@@ -15,7 +15,7 @@
                 "goTo": 20,
                 "sounds": [
                     "bookopening.mp3",
-                    "pageturning.mp3"
+                    "pageturning.mp3",
                 ]
             },
             {
