@@ -38,6 +38,7 @@ export default Vue.extend({
             if (this.isInputValid(statement)) {
                 const inputCommand = this.getCommand(statement);
                 if (inputCommand !== undefined) {
+                    this.playInput(inputCommand);
                     this.incrementId(inputCommand.goTo);
                     this.addStatementToHistory(this.currentScene.text);
                     this.addStatementToHistory(this.parsedCommandTexts);
@@ -58,6 +59,10 @@ export default Vue.extend({
         },
         getCommand(statement: string) {
             return this.currentScene.commands.find((command) => command.input === statement.toLowerCase());
+        },
+        playInput(command: ICommand) {
+            const audio = new Audio(require('./../assets/' + command.sounds[0]));
+            audio.play();
         },
     },
     computed: {
