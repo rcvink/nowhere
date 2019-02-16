@@ -5,15 +5,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import Vue from 'vue';
 import Terminal from '@/components/Terminal.vue';
 
-@Component({
+export default Vue.extend({
+  name: 'Home',
   components: {
     Terminal,
   },
-})
-export default class Home extends Vue {}
+});
 </script>
 
 <style lang="scss" scoped>
