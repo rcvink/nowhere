@@ -21,59 +21,66 @@ export default Vue.extend({
         History,
         Input,
     },
-    created() {
-        this.addStatementToHistory(this.currentScene.text);
-        this.addStatementToHistory(this.parsedCommandTexts);
+    mounted() {
+        this.print(this.scene.text);
+        this.print(this.validInputs);
     },
     data() {
         return {
             scenes: scenes as IScene[],
-            currentId: 0,
+            scene: scenes[0] as IScene,
             statements: [] as string[],
         };
     },
     methods: {
         handleInput(statement: string) {
-            this.addStatementToHistory(statement);
-            if (this.isInputValid(statement)) {
-                const inputCommand = this.getCommand(statement);
-                if (inputCommand !== undefined) {
-                    this.playInput(inputCommand);
-                    this.incrementId(inputCommand.goTo);
-                    this.addStatementToHistory(this.currentScene.text);
-                    this.addStatementToHistory(this.parsedCommandTexts);
+            this.print(statement);
+            if (this.isValidInput(statement)) {
+                const command = this.getCommand(statement);
+                if (command !== undefined) {
+                    this.playInput(command);
+                    this.setScene(command.goTo);
+                    this.print(this.scene.text);
+                    this.print(this.validInputs);
                 }
             } else {
-                this.addStatementToHistory(this.currentScene.text);
-                this.addStatementToHistory(this.parsedCommandTexts);
+                this.print(this.scene.text);
+                this.print(this.validInputs);
             }
         },
-        addStatementToHistory(statement: string) {
+        print(statement: string) {
             this.statements.push(statement);
         },
-        isInputValid(statement: string) {
-            return this.commandTexts.includes(statement.toLowerCase());
-        },
-        incrementId(newId: number) {
-            this.currentId = newId;
+        isValidInput(statement: string) {
+            return this.scene.commands
+                .map((x) => x.input)
+                .includes(statement.toLowerCase());
         },
         getCommand(statement: string) {
-            return this.currentScene.commands.find((command) => command.input === statement.toLowerCase());
+            return this.scene.commands
+                .find((command) => command.input === statement.toLowerCase());
         },
         playInput(command: ICommand) {
-            const audio = new Audio(require('./../assets/' + command.sounds[0]));
-            audio.play();
+            try {
+                const path = require('./../assets/' + command.sounds[0]);
+                const audio = new Audio(path);
+                audio.play();
+            } catch (error) {
+                return;
+            }
+        },
+        setScene(newSceneId: number) {
+            const newScene = this.scenes.find((x) => x.id === newSceneId);
+            if (newScene !== undefined) {
+                this.scene = newScene;
+            }
         },
     },
     computed: {
-        currentScene(): IScene {
-            return this.scenes.find((scene) => scene.id === this.currentId) || this.scenes[0];
-        },
-        commandTexts(): string[] {
-            return this.currentScene.commands.map((x) => x.input);
-        },
-        parsedCommandTexts(): string {
-            return this.commandTexts.join(' | ');
+        validInputs(): string {
+            return this.scene.commands
+                .map((x) => x.input)
+                .join(' | ');
         },
     },
 });
