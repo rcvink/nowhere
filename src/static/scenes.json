@@ -7,7 +7,7 @@
                 "input": "sip drink",
                 "goTo": 10,
                 "sounds": [
-                    "sipdrink.mp3"
+                    "sipdrink1.mp3"
                 ]
             },
             {
@@ -15,14 +15,14 @@
                 "goTo": 20,
                 "sounds": [
                     "bookopening.mp3",
-                    "pageturning.mp3"
+                    "pageturning1.mp3"
                 ]
             },
             {
                 "input": "exit cafe",
                 "goTo": 30,
                 "sounds": [
-                    "footstepstodoor.mp3",
+                    "cafefootstepsprephonedrop.mp3",
                     "phonedrop.mp3"
                 ]
             }
@@ -36,7 +36,7 @@
                 "input": "sip drink",
                 "goTo": 10,
                 "sounds": [
-                    "sipdrink.mp3"
+                    "sipdrink2.mp3"
                 ]
             },
             {
@@ -44,14 +44,14 @@
                 "goTo": 20,
                 "sounds": [
                     "bookopening.mp3",
-                    "pageturning.mp3"
+                    "pageturning1.mp3"
                 ]
             },
             {
                 "input": "exit cafe",
                 "goTo": 30,
                 "sounds": [
-                    "footstepstodoor.mp3",
+                    "cafefootstepsprephonedrop.mp3",
                     "phonedrop.mp3"
                 ]
             }
@@ -72,7 +72,7 @@
                 "input": "read more",
                 "goTo": 21,
                 "sounds": [
-                    "pageturning.mp3",
+                    "pageturning2.mp3",
                     "casiowatchbeep.mp3"
                 ]
             }
@@ -93,7 +93,7 @@
                 "input": "read more",
                 "goTo": 22,
                 "sounds": [
-                    "pageturning.mp3"
+                    "pageturning3.mp3"
                 ]
             }
         ]
@@ -113,7 +113,7 @@
                 "input": "read more",
                 "goTo": 23,
                 "sounds": [
-                    "pageturning.mp3"
+                    "pageturning3.mp3"
                 ]
             }
         ]
@@ -140,6 +140,7 @@
                 "input": "leave phone",
                 "goTo": 40,
                 "sounds": [
+                    "cafefootstepsanddooropening.mp3"
                 ]
             },
             {
@@ -166,7 +167,7 @@
                 "input": "exit cafe",
                 "goTo": 100,
                 "sounds": [
-                    "footstepsanddooropening.mp3"
+                    "cafefootstepsanddooropening.mp3"
                 ]
             }
         ]
@@ -179,7 +180,7 @@
                 "input": "exit cafe",
                 "goTo": 100,
                 "sounds": [
-                    "footstepsanddooropening.mp3"
+                    "cafefootstepsanddooropening.mp3"
                 ]
             }
         ]
@@ -192,7 +193,7 @@
                 "input": "exit cafe",
                 "goTo": 100,
                 "sounds": [
-                    "footstepsanddooropening.mp3"
+                    "cafefootstepsanddooropening.mp3"
                 ]
             }
         ]
