@@ -1,6 +1,8 @@
 <template>
-    <div class="monitor-container container monitor">
-        <History class="history-child" :initialStatements="statements"/>
+    <div class="terminal-container container terminal">
+        <History 
+            class="history-child" 
+            :initialStatements="statements"/>
         <Input 
             class="input-child container input-container" 
             @input="handleInput"/>
@@ -16,7 +18,7 @@ import ICommand from '@/models/ICommand';
 import scenes from '@/static/scenes.json';
 
 export default Vue.extend({
-    name: 'Monitor',
+    name: 'Terminal',
     components: {
         History,
         Input,
@@ -88,7 +90,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.monitor {
+.terminal {
     background-color: rgb(0, 0, 0);
     width: 100%;
     height: 95vh;
@@ -96,7 +98,7 @@ export default Vue.extend({
     cursor: crosshair;
 }
 
-.monitor-container {
+.terminal-container {
     flex-direction: column;
     justify-content: flex-start;
 }

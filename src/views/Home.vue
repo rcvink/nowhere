@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <Monitor />
+    <Terminal />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Monitor from '@/components/Monitor.vue';
+import Terminal from '@/components/Terminal.vue';
 
 @Component({
   components: {
-    Monitor,
+    Terminal,
   },
 })
 export default class Home extends Vue {}
