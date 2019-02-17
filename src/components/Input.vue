@@ -1,9 +1,6 @@
 <template>
     <div>
         <div class="form container form-child">
-            <div class="leading-child">
-                C:\>
-            </div>
             <textarea 
                 autofocus="true"
                 class="input input-child"

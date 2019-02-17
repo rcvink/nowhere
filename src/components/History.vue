@@ -4,7 +4,7 @@
             class="list" 
             :key="index"
             v-for="(statement, index) in statements">
-            C:\>{{ statement }}
+            {{ statement }}
         </li>
     </div>
 </template>
