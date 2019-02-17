@@ -45,10 +45,7 @@ export default Vue.extend({
                     this.print(this.scene.text);
                     this.print(this.validInputs);
                 }
-            } else {
-                this.print(this.scene.text);
-                this.print(this.validInputs);
-            }
+            } 
         },
         print(statement: string) {
             this.statements.push(statement);
