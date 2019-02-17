@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Terminal />
+    <Terminal class="terminal"/>
   </div>
 </template>
 
@@ -19,5 +19,9 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .home {
   height: 100%
+}
+
+.terminal {
+  margin: calc(10px + 0.1%);
 }
 </style>
