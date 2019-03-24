@@ -1,7 +1,7 @@
 [
     {
         "id": 0,
-        "text": "You are not sitting in a cafe.",
+        "text": "You are sitting in a cafe.",
         "commands": [
             {
                 "input": "sip drink",
