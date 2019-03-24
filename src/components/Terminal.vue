@@ -47,8 +47,16 @@ export default Vue.extend({
                 }
             } 
         },
+        typewriter(text: string, i: number) {
+            if (i < text.length) {
+                this.statements.push(text.substring(0, i + 1));
+                setTimeout(() => {
+                    this.typewriter(text, i + 1)
+                }, 100);
+            }
+        },
         print(statement: string) {
-            this.statements.push(statement);
+            this.typewriter(statement, 0);
         },
         isValidInput(statement: string) {
             return this.scene.commands

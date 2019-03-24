@@ -1,5 +1,5 @@
 <template>
-    <div class="history typewriter">
+    <div class="history">
         <li 
             class="list " 
             :key="index"
@@ -35,18 +35,6 @@ export default Vue.extend({
 
 .list {
     list-style-type: none;
-}
-
-.typewriter {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  white-space: nowrap; /* Keeps the content on a single line */
-  animation: 
-    typing 2s steps(40, end),
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
 }
 
 </style>
