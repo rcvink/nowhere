@@ -6,8 +6,7 @@
         <Input 
             class="input-child container input-container" 
             :currentScene="state.scene"
-            @validInput="handleValidInput"
-            @invalidInput="handleInvalidInput"/>
+            @validInput="handleInput"/>
     </div>
 </template>
 
@@ -28,8 +27,8 @@ export default Vue.extend({
         Input,
     },
     mounted() {
-        this.print(this.state.scene.text);
-        this.print(this.validInputs);
+        this.printStory(this.state.scene.text);
+        this.printStory(this.validInputs);
     },
     data() {
         return {
@@ -37,18 +36,35 @@ export default Vue.extend({
         };
     },
     methods: {
-        handleValidInput(statement: string, command: ICommand) {
-            this.print(statement);
+        handleInput(statement: string, command: ICommand) {
+            this.printInput(statement);
             this.playInput(command);
             this.setScene(command.goTo);
-            this.print(this.state.scene.text);
-            this.print(this.validInputs);
+            this.printStory(this.state.scene.text);
+            this.printStory(this.validInputs);
         },
-        handleInvalidInput(statement: string) {
-            this.print(statement);
+        printStory(text: string) {
+            this.state.statements.push(text[0]);
+            const chars = text.split('');
+            this.printRecursively(1, chars);
         },
-        print(statement: string) {
+        printInput(statement: string) {
             this.state.statements.push(statement);
+        },
+        printRecursively(indexToPrint: number, statementToPrint: string[]) {
+            if (indexToPrint === statementToPrint.length) {
+                return;
+            }
+
+            ((timeIndex) => {
+                setTimeout(() => {
+                    let currentStatement = this.state.statements.pop();
+                    currentStatement += statementToPrint[indexToPrint];
+                    this.state.statements.push(currentStatement || '');
+                }, timeIndex * 50);
+            })(indexToPrint);
+
+            this.printRecursively(indexToPrint + 1, statementToPrint);
         },
         playInput(command: ICommand) {
             try {
