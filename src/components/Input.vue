@@ -24,8 +24,6 @@ export default Vue.extend({
             if (this.isValidInput(this.statement)) {
                 const command = this.getCommand(this.statement);
                 this.$emit('validInput', this.statement, command);
-            } else {
-                this.$emit('invalidInput', this.statement);
             }
             this.clearStatement();
         },
