@@ -1,7 +1,7 @@
 <template>
     <div class="history">
         <li 
-            class="list" 
+            class="list " 
             :key="index"
             v-for="(statement, index) in statements">
             {{ statement }}
@@ -36,4 +36,5 @@ export default Vue.extend({
 .list {
     list-style-type: none;
 }
+
 </style>
