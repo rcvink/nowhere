@@ -15,23 +15,40 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import IScene from '@/models/IScene';
 
 export default Vue.extend({
     name: 'Input',
     methods: {
         handleSubmit() {
-            this.$emit('input', this.statement);
+            if (this.isValidInput(this.statement)) {
+                const command = this.getCommand(this.statement);
+                this.$emit('validInput', this.statement, command);
+            } else {
+                this.$emit('invalidInput', this.statement);
+            }
             this.clearStatement();
         },
         clearStatement() {
             this.statement = '';
         },
+        isValidInput(statement: string) {
+            return this.scene.commands
+                .map((x) => x.input)
+                .includes(statement.toLowerCase());
+        },
+        getCommand(statement: string) {
+            return this.scene.commands
+                .find((command) => command.input === statement.toLowerCase());
+        },
     },
     data() {
         return {
             statement: '',
+            scene: this.currentScene as IScene,
         };
     },
+    props: ['currentScene'],
 });
 
 </script>

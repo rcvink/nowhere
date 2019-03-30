@@ -2,10 +2,12 @@
     <div class="terminal-container container terminal">
         <History 
             class="history-child" 
-            :initialStatements="statements"/>
+            :initialStatements="state.statements"/>
         <Input 
             class="input-child container input-container" 
-            @input="handleInput"/>
+            :currentScene="state.scene"
+            @validInput="handleValidInput"
+            @invalidInput="handleInvalidInput"/>
     </div>
 </template>
 
@@ -16,6 +18,8 @@ import Input from '@/components/Input.vue';
 import IScene from '@/models/IScene';
 import ICommand from '@/models/ICommand';
 import scenes from '@/static/scenes.json';
+import IState from '@/models/IState';
+import State from '@/models/State';
 
 export default Vue.extend({
     name: 'Terminal',
@@ -24,40 +28,27 @@ export default Vue.extend({
         Input,
     },
     mounted() {
-        this.print(this.scene.text);
+        this.print(this.state.scene.text);
         this.print(this.validInputs);
     },
     data() {
         return {
-            scenes: scenes as IScene[],
-            scene: scenes[0] as IScene,
-            statements: [] as string[],
+            state: new State() as IState,
         };
     },
     methods: {
-        handleInput(statement: string) {
+        handleValidInput(statement: string, command: ICommand) {
             this.print(statement);
-            if (this.isValidInput(statement)) {
-                const command = this.getCommand(statement);
-                if (command !== undefined) {
-                    this.playInput(command);
-                    this.setScene(command.goTo);
-                    this.print(this.scene.text);
-                    this.print(this.validInputs);
-                }
-            } 
+            this.playInput(command);
+            this.setScene(command.goTo);
+            this.print(this.state.scene.text);
+            this.print(this.validInputs);
+        },
+        handleInvalidInput(statement: string) {
+            this.print(statement);
         },
         print(statement: string) {
-            this.statements.push(statement);
-        },
-        isValidInput(statement: string) {
-            return this.scene.commands
-                .map((x) => x.input)
-                .includes(statement.toLowerCase());
-        },
-        getCommand(statement: string) {
-            return this.scene.commands
-                .find((command) => command.input === statement.toLowerCase());
+            this.state.statements.push(statement);
         },
         playInput(command: ICommand) {
             try {
@@ -69,15 +60,15 @@ export default Vue.extend({
             }
         },
         setScene(newSceneId: number) {
-            const newScene = this.scenes.find((x) => x.id === newSceneId);
+            const newScene = this.state.scenes.find((x) => x.id === newSceneId);
             if (newScene !== undefined) {
-                this.scene = newScene;
+                this.state.scene = newScene;
             }
         },
     },
     computed: {
         validInputs(): string {
-            return this.scene.commands
+            return this.state.scene.commands
                 .map((x) => x.input)
                 .join(' | ');
         },
