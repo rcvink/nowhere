@@ -43,10 +43,30 @@ export default Vue.extend({
             this.printStory(this.state.scene.text);
             this.printStory(this.validInputs);
         },
-        printStory(text: string) {
-            this.state.statements.push(text[0]);
-            const chars = text.split('');
-            this.printRecursively(1, chars);
+        printStory(statement: string) {
+            this.state.printChain = this.state.printChain.then(() => {
+                return new Promise((resolve) => {
+                    this.state.statements.push(statement[0]);
+
+                    const chars = statement.split('');
+
+                    for (let charIndex = 1; charIndex < chars.length; charIndex++) {
+                        const char = chars[charIndex];
+
+                        ((timeIndex) => {
+                            setTimeout(() => {
+                                let currentStatement = this.state.statements.pop();
+                                currentStatement += char;
+                                this.state.statements.push(currentStatement || '');
+
+                                if (charIndex === chars.length - 1) {
+                                    resolve();
+                                }
+                            }, timeIndex * 50);
+                        })(charIndex);
+                    }
+                });
+            });
         },
         printInput(statement: string) {
             this.state.statements.push(statement);

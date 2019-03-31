@@ -6,4 +6,5 @@ export default class State implements IState {
     public scene: IScene = scenes[0];
     public scenes: IScene[] = scenes;
     public statements: string[] = [];
+    public printChain: Promise<{}> = Promise.resolve({});
 }
