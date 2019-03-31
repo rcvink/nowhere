@@ -19,7 +19,7 @@ export default class InputService implements IInputService {
         this.audioService = audioService;
     }
 
-    public handleInput(input: string): void {
+    public handleInput(input: string) {
         if (this.isValidInput(input)) {
             const command = this.getCommand(input);
             this.setScene(command.goTo);
@@ -30,13 +30,13 @@ export default class InputService implements IInputService {
         }
     }
 
-    public getValidInputs(): string {
+    public getValidInputs() {
         return this.state.scene.commands
             .map((x) => x.input)
             .join(' | ');
     }
 
-    private isValidInput(input: string): boolean {
+    private isValidInput(input: string) {
         return this.state.scene.commands
             .map((x) => x.input)
             .includes(input.toLowerCase());
@@ -49,7 +49,7 @@ export default class InputService implements IInputService {
         }
     }
 
-    private getCommand(input: string): ICommand {
+    private getCommand(input: string) {
         return this.state.scene.commands
             .find((command) => command.input === input.toLowerCase()) ||
             this.state.scene.commands[0];

@@ -8,7 +8,7 @@ export default class PrintService implements IPrintService {
         this.state = state;
     }
 
-    public printAnimated(statement: string): void {
+    public printAnimated(statement: string) {
         this.state.printChain = this.state.printChain.then(() => {
             return new Promise((resolve) => {
                 this.state.statements.push(statement[0]);
@@ -32,7 +32,7 @@ export default class PrintService implements IPrintService {
         });
     }
 
-    public printInstantly(statement: string): void {
+    public printInstantly(statement: string) {
         this.state.statements.push(statement);
     }
 }
