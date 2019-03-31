@@ -60,7 +60,7 @@ export default Vue.extend({
                                 if (charIndex === chars.length - 1) {
                                     resolve();
                                 }
-                            }, timeIndex * 50);
+                            }, timeIndex * 40);
                         })(charIndex);
                     }
                 });
