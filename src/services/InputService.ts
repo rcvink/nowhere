@@ -3,6 +3,7 @@ import IInputService from '@/services/IInputService';
 import IAudioService from '@/services/IAudioService';
 import IPrintService from '@/services/IPrintService';
 import IState from '@/models/IState';
+import Vue from 'vue';
 
 export default class InputService implements IInputService {
     private state: IState;
@@ -26,10 +27,23 @@ export default class InputService implements IInputService {
         this.printService.printAnimated(this.getValidInputs());
     }
 
+    public handleSubmit(input: string, context: Vue): void {
+        if (this.isValidInput(input)) {
+            const command = this.getCommand(input);
+            context.$emit('validInput', input, command);
+        }
+    }
+
     public getValidInputs(): string {
         return this.state.scene.commands
             .map((x) => x.input)
             .join(' | ');
+    }
+
+    private isValidInput(input: string): boolean {
+        return this.state.scene.commands
+            .map((x) => x.input)
+            .includes(input.toLowerCase());
     }
 
     private setScene(newSceneId: number) {
@@ -37,5 +51,11 @@ export default class InputService implements IInputService {
         if (newScene !== undefined) {
             this.state.scene = newScene;
         }
+    }
+
+    private getCommand(input: string): ICommand {
+        return this.state.scene.commands
+            .find((command) => command.input === input.toLowerCase()) ||
+            this.state.scene.commands[0];
     }
 }

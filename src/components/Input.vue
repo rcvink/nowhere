@@ -19,35 +19,17 @@ import IScene from '@/models/IScene';
 import IState from '@/models/IState';
 import State from '@/models/State';
 import ICommand from '@/models/ICommand';
+import IInputService from '@/services/IInputService';
 
 export default Vue.extend({
     name: 'Input',
     methods: {
         handleSubmit() {
-            if (this.isValidInput(this.statement)) {
-                const command = this.getCommand(this.statement);
-                this.$emit('validInput', this.statement, command);
-            }
+            this.inputService.handleSubmit(this.statement, this);
             this.clearStatement();
         },
         clearStatement() {
             this.statement = '';
-        },
-        isValidInput(statement: string) {
-            return this.state.scene.commands
-                .map((x) => x.input)
-                .includes(statement.toLowerCase());
-        },
-        getCommand(statement: string) {
-            return this.state.scene.commands
-                .find((command) => command.input === statement.toLowerCase()) ||
-                this.state.scene.commands[0];
-        },
-        setScene(newSceneId: number) {
-            const newScene = this.state.scenes.find((x) => x.id === newSceneId);
-            if (newScene !== undefined) {
-                this.state.scene = newScene;
-            }
         },
     },
     data() {
@@ -58,6 +40,9 @@ export default Vue.extend({
     props: {
         state: {
             type: Object as () => IState,
+        },
+        inputService: {
+            type: Object as () => IInputService,
         },
     },
 });

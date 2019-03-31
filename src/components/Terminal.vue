@@ -7,6 +7,7 @@
             class="input-child container input-container" 
             :currentScene="state.scene"
             :state="state"
+            :input-service="inputService"
             @validInput="handleInput"/>
     </div>
 </template>
