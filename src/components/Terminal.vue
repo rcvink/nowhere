@@ -16,7 +16,6 @@ import History from '@/components/History.vue';
 import Input from '@/components/Input.vue';
 import IScene from '@/models/IScene';
 import ICommand from '@/models/ICommand';
-import scenes from '@/static/scenes.json';
 import IState from '@/models/IState';
 import State from '@/models/State';
 
@@ -47,12 +46,10 @@ export default Vue.extend({
             this.state.printChain = this.state.printChain.then(() => {
                 return new Promise((resolve) => {
                     this.state.statements.push(statement[0]);
-
                     const chars = statement.split('');
 
                     for (let charIndex = 1; charIndex < chars.length; charIndex++) {
                         const char = chars[charIndex];
-
                         ((timeIndex) => {
                             setTimeout(() => {
                                 let currentStatement = this.state.statements.pop();
