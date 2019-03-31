@@ -6,6 +6,7 @@
         <Input 
             class="input-child container input-container" 
             :currentScene="state.scene"
+            :state="state"
             @validInput="handleInput"/>
     </div>
 </template>
@@ -36,9 +37,9 @@ export default Vue.extend({
     },
     methods: {
         handleInput(statement: string, command: ICommand) {
+            this.setScene(command.goTo);
             this.printInput(statement);
             this.playInput(command);
-            this.setScene(command.goTo);
             this.printStory(this.state.scene.text);
             this.printStory(this.validInputs);
         },

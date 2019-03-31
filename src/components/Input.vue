@@ -5,7 +5,7 @@
                 autofocus="true"
                 class="input input-child"
                 type="text" 
-                v-model="statement" 
+                v-model="statement"
                 v-on:keydown.enter="handleSubmit" 
                 v-on:keydown.enter.prevent>
             </textarea>
@@ -16,6 +16,9 @@
 <script lang="ts">
 import Vue from 'vue';
 import IScene from '@/models/IScene';
+import IState from '@/models/IState';
+import State from '@/models/State';
+import ICommand from '@/models/ICommand';
 
 export default Vue.extend({
     name: 'Input',
@@ -31,22 +34,32 @@ export default Vue.extend({
             this.statement = '';
         },
         isValidInput(statement: string) {
-            return this.scene.commands
+            return this.state.scene.commands
                 .map((x) => x.input)
                 .includes(statement.toLowerCase());
         },
         getCommand(statement: string) {
-            return this.scene.commands
-                .find((command) => command.input === statement.toLowerCase());
+            return this.state.scene.commands
+                .find((command) => command.input === statement.toLowerCase()) ||
+                this.state.scene.commands[0];
+        },
+        setScene(newSceneId: number) {
+            const newScene = this.state.scenes.find((x) => x.id === newSceneId);
+            if (newScene !== undefined) {
+                this.state.scene = newScene;
+            }
         },
     },
     data() {
         return {
             statement: '',
-            scene: this.currentScene as IScene,
         };
     },
-    props: ['currentScene'],
+    props: {
+        state: {
+            type: Object as () => IState,
+        },
+    },
 });
 
 </script>
