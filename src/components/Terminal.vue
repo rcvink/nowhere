@@ -21,6 +21,8 @@ import IState from '@/models/IState';
 import State from '@/models/State';
 import PrintService from '@/services/PrintService';
 import IPrintService from '@/services/IPrintService';
+import AudioService from '@/services/AudioService';
+import IAudioService from '@/services/IAudioService';
 
 export default Vue.extend({
     name: 'Terminal',
@@ -29,7 +31,8 @@ export default Vue.extend({
         Input,
     },
     mounted() {
-        this.printService = new PrintService(this.state) as IPrintService,
+        this.printService = new PrintService(this.state) as IPrintService;
+        this.audioService = new AudioService() as IAudioService;
         this.printService.printAnimated(this.state.scene.text);
         this.printService.printAnimated(this.validInputs);
     },
@@ -37,13 +40,14 @@ export default Vue.extend({
         return {
             state: new State() as IState,
             printService: Object() as IPrintService,
+            audioService: Object() as IAudioService,
         };
     },
     methods: {
         handleInput(statement: string, command: ICommand) {
             this.setScene(command.goTo);
             this.printService.printInstantly(statement);
-            this.playInput(command);
+            this.audioService.play(command);
             this.printService.printAnimated(this.state.scene.text);
             this.printService.printAnimated(this.validInputs);
         },
