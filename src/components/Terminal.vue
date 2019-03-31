@@ -5,10 +5,7 @@
             :initialStatements="state.statements"/>
         <Input 
             class="input-child container input-container" 
-            :currentScene="state.scene"
-            :state="state"
-            :input-service="inputService"
-            @validInput="handleInput"/>
+            :input-service="inputService"/>
     </div>
 </template>
 
@@ -16,8 +13,6 @@
 import Vue from 'vue';
 import History from '@/components/History.vue';
 import Input from '@/components/Input.vue';
-import IScene from '@/models/IScene';
-import ICommand from '@/models/ICommand';
 import IState from '@/models/IState';
 import State from '@/models/State';
 import PrintService from '@/services/PrintService';
@@ -26,6 +21,7 @@ import AudioService from '@/services/AudioService';
 import IAudioService from '@/services/IAudioService';
 import IInputService from '@/services/IInputService';
 import InputService from '@/services/InputService';
+import scenes from '@/static/scenes.json';
 
 export default Vue.extend({
     name: 'Terminal',
@@ -34,8 +30,8 @@ export default Vue.extend({
         Input,
     },
     mounted() {
-        this.printService = new PrintService(this.state) as IPrintService;
         this.audioService = new AudioService() as IAudioService;
+        this.printService = new PrintService(this.state) as IPrintService;
         this.inputService = new InputService(
             this.state,
             this.printService,
@@ -45,16 +41,11 @@ export default Vue.extend({
     },
     data() {
         return {
-            state: new State() as IState,
+            state: new State(scenes) as IState,
             printService: Object() as IPrintService,
             audioService: Object() as IAudioService,
             inputService: Object() as IInputService,
         };
-    },
-    methods: {
-        handleInput(statement: string, command: ICommand) {
-            this.inputService.handleInput(statement, command);
-        },
     },
 });
 

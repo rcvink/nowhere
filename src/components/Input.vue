@@ -15,20 +15,16 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import IScene from '@/models/IScene';
-import IState from '@/models/IState';
-import State from '@/models/State';
-import ICommand from '@/models/ICommand';
 import IInputService from '@/services/IInputService';
 
 export default Vue.extend({
     name: 'Input',
     methods: {
         handleSubmit() {
-            this.inputService.handleSubmit(this.statement, this);
-            this.clearStatement();
+            this.inputService.handleInput(this.statement);
+            this.clearTextArea();
         },
-        clearStatement() {
+        clearTextArea() {
             this.statement = '';
         },
     },
@@ -38,9 +34,6 @@ export default Vue.extend({
         };
     },
     props: {
-        state: {
-            type: Object as () => IState,
-        },
         inputService: {
             type: Object as () => IInputService,
         },

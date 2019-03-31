@@ -19,18 +19,14 @@ export default class InputService implements IInputService {
         this.audioService = audioService;
     }
 
-    public handleInput(input: string, command: ICommand): void {
-        this.setScene(command.goTo);
-        this.printService.printInstantly(input);
-        this.audioService.play(command);
-        this.printService.printAnimated(this.state.scene.text);
-        this.printService.printAnimated(this.getValidInputs());
-    }
-
-    public handleSubmit(input: string, context: Vue): void {
+    public handleInput(input: string): void {
         if (this.isValidInput(input)) {
             const command = this.getCommand(input);
-            context.$emit('validInput', input, command);
+            this.setScene(command.goTo);
+            this.printService.printInstantly(input);
+            this.audioService.play(command);
+            this.printService.printAnimated(this.state.scene.text);
+            this.printService.printAnimated(this.getValidInputs());
         }
     }
 
