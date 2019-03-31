@@ -19,6 +19,8 @@ import IScene from '@/models/IScene';
 import ICommand from '@/models/ICommand';
 import IState from '@/models/IState';
 import State from '@/models/State';
+import PrintService from '@/services/PrintService';
+import IPrintService from '@/services/IPrintService';
 
 export default Vue.extend({
     name: 'Terminal',
@@ -27,47 +29,23 @@ export default Vue.extend({
         Input,
     },
     mounted() {
-        this.printStory(this.state.scene.text);
-        this.printStory(this.validInputs);
+        this.printService = new PrintService(this.state) as IPrintService,
+        this.printService.printAnimated(this.state.scene.text);
+        this.printService.printAnimated(this.validInputs);
     },
     data() {
         return {
             state: new State() as IState,
+            printService: Object() as IPrintService,
         };
     },
     methods: {
         handleInput(statement: string, command: ICommand) {
             this.setScene(command.goTo);
-            this.printInput(statement);
+            this.printService.printInstantly(statement);
             this.playInput(command);
-            this.printStory(this.state.scene.text);
-            this.printStory(this.validInputs);
-        },
-        printStory(statement: string) {
-            this.state.printChain = this.state.printChain.then(() => {
-                return new Promise((resolve) => {
-                    this.state.statements.push(statement[0]);
-                    const chars = statement.split('');
-
-                    for (let charIndex = 1; charIndex < chars.length; charIndex++) {
-                        const char = chars[charIndex];
-                        ((timeIndex) => {
-                            setTimeout(() => {
-                                let currentStatement = this.state.statements.pop();
-                                currentStatement += char;
-                                this.state.statements.push(currentStatement || '');
-
-                                if (charIndex === chars.length - 1) {
-                                    resolve();
-                                }
-                            }, timeIndex * 40);
-                        })(charIndex);
-                    }
-                });
-            });
-        },
-        printInput(statement: string) {
-            this.state.statements.push(statement);
+            this.printService.printAnimated(this.state.scene.text);
+            this.printService.printAnimated(this.validInputs);
         },
         playInput(command: ICommand) {
             try {
