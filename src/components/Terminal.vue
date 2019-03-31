@@ -23,6 +23,8 @@ import PrintService from '@/services/PrintService';
 import IPrintService from '@/services/IPrintService';
 import AudioService from '@/services/AudioService';
 import IAudioService from '@/services/IAudioService';
+import IInputService from '@/services/IInputService';
+import InputService from '@/services/InputService';
 
 export default Vue.extend({
     name: 'Terminal',
@@ -33,45 +35,24 @@ export default Vue.extend({
     mounted() {
         this.printService = new PrintService(this.state) as IPrintService;
         this.audioService = new AudioService() as IAudioService;
+        this.inputService = new InputService(
+            this.state,
+            this.printService,
+            this.audioService) as IInputService;
         this.printService.printAnimated(this.state.scene.text);
-        this.printService.printAnimated(this.validInputs);
+        this.printService.printAnimated(this.inputService.getValidInputs());
     },
     data() {
         return {
             state: new State() as IState,
             printService: Object() as IPrintService,
             audioService: Object() as IAudioService,
+            inputService: Object() as IInputService,
         };
     },
     methods: {
         handleInput(statement: string, command: ICommand) {
-            this.setScene(command.goTo);
-            this.printService.printInstantly(statement);
-            this.audioService.play(command);
-            this.printService.printAnimated(this.state.scene.text);
-            this.printService.printAnimated(this.validInputs);
-        },
-        playInput(command: ICommand) {
-            try {
-                const path = require('./../assets/' + command.sounds[0]);
-                const audio = new Audio(path);
-                audio.play();
-            } catch (error) {
-                return;
-            }
-        },
-        setScene(newSceneId: number) {
-            const newScene = this.state.scenes.find((x) => x.id === newSceneId);
-            if (newScene !== undefined) {
-                this.state.scene = newScene;
-            }
-        },
-    },
-    computed: {
-        validInputs(): string {
-            return this.state.scene.commands
-                .map((x) => x.input)
-                .join(' | ');
+            this.inputService.handleInput(statement, command);
         },
     },
 });
