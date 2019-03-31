@@ -68,21 +68,6 @@ export default Vue.extend({
         printInput(statement: string) {
             this.state.statements.push(statement);
         },
-        printRecursively(indexToPrint: number, statementToPrint: string[]) {
-            if (indexToPrint === statementToPrint.length) {
-                return;
-            }
-
-            ((timeIndex) => {
-                setTimeout(() => {
-                    let currentStatement = this.state.statements.pop();
-                    currentStatement += statementToPrint[indexToPrint];
-                    this.state.statements.push(currentStatement || '');
-                }, timeIndex * 50);
-            })(indexToPrint);
-
-            this.printRecursively(indexToPrint + 1, statementToPrint);
-        },
         playInput(command: ICommand) {
             try {
                 const path = require('./../assets/' + command.sounds[0]);
