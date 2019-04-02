@@ -26,7 +26,7 @@ export default class PrintService implements IPrintService {
                                 this.scrollDown();
                                 resolve();
                             }
-                        }, timeIndex * 1);
+                        }, timeIndex * 40);
                     })(charIndex);
                 }
             });
