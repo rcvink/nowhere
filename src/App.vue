@@ -4,6 +4,22 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue';
+import Models from '@/models';
+import Services from '@/services';
+
+export default Vue.extend({
+  name: 'App',
+  provide() {
+    return {
+      ...Models,
+      ...Services,
+    };
+  },
+});
+</script>
+
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

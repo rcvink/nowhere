@@ -15,13 +15,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import IInputService from '@/services/IInputService';
+import Services from '@/services';
 
 export default Vue.extend({
     name: 'Input',
     methods: {
         handleSubmit() {
-            this.inputService.handleInput(this.statement);
+            Services.inputService.handleInput(this.statement);
             this.clearTextArea();
         },
         clearTextArea() {
@@ -32,11 +32,6 @@ export default Vue.extend({
         return {
             statement: '',
         };
-    },
-    props: {
-        inputService: {
-            type: Object as () => IInputService,
-        },
     },
 });
 

@@ -1,11 +1,7 @@
 <template>
     <div class="terminal-container container terminal">
-        <History 
-            class="history-child" 
-            :initialStatements="state.statements"/>
-        <Input 
-            class="input-child container input-container" 
-            :input-service="inputService"/>
+        <History class="history-child"/>
+        <Input class="input-child container input-container"/>
     </div>
 </template>
 
@@ -13,15 +9,8 @@
 import Vue from 'vue';
 import History from '@/components/History.vue';
 import Input from '@/components/Input.vue';
-import IState from '@/models/IState';
-import State from '@/models/State';
-import PrintService from '@/services/PrintService';
-import IPrintService from '@/services/IPrintService';
-import AudioService from '@/services/AudioService';
-import IAudioService from '@/services/IAudioService';
-import IInputService from '@/services/IInputService';
-import InputService from '@/services/InputService';
-import scenes from '@/static/scenes.json';
+import Models from '@/models';
+import Services from '@/services';
 
 export default Vue.extend({
     name: 'Terminal',
@@ -30,22 +19,8 @@ export default Vue.extend({
         Input,
     },
     mounted() {
-        this.audioService = new AudioService() as IAudioService;
-        this.printService = new PrintService(this.state) as IPrintService;
-        this.inputService = new InputService(
-            this.state,
-            this.printService,
-            this.audioService) as IInputService;
-        this.printService.printAnimated(this.state.scene.text);
-        this.printService.printAnimated(this.inputService.getValidInputs());
-    },
-    data() {
-        return {
-            state: new State(scenes) as IState,
-            printService: Object() as IPrintService,
-            audioService: Object() as IAudioService,
-            inputService: Object() as IInputService,
-        };
+        Services.printService.printAnimated(Models.state.scene.text);
+        Services.printService.printAnimated(Services.inputService.getValidInputs());
     },
 });
 

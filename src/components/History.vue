@@ -11,15 +11,15 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import Models from '@/models';
 
 export default Vue.extend({
     name: 'History',
     data() {
        return {
-           statements: this.initialStatements,
+           statements: Models.state.statements,
        };
     },
-    props: ['initialStatements'],
 });
 </script>
 
