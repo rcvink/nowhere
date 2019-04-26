@@ -23,6 +23,7 @@ export default class PrintService implements IPrintService {
                             this.state.statements.push(currentStatement || '');
 
                             if (charIndex === chars.length - 1) {
+                                this.scrollDown();
                                 resolve();
                             }
                         }, timeIndex * 40);
@@ -30,9 +31,15 @@ export default class PrintService implements IPrintService {
                 }
             });
         });
+
     }
 
     public printInstantly(statement: string) {
         this.state.statements.push(statement);
+        this.scrollDown();
+    }
+
+    private scrollDown() {
+        window.scrollTo(0, document.body.scrollHeight);
     }
 }
