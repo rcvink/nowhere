@@ -1,4 +1,4 @@
-import ICommand from '@/models/ICommand';
+import { ICommand } from '@/models';
 
 export default interface IAudioService {
     play(command: ICommand): void;

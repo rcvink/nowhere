@@ -1,5 +1,5 @@
-import IState from '@/models/IState';
-import IPrintService from '@/services/IPrintService';
+import { IState } from '@/models';
+import { IPrintService } from '@/services';
 
 export default class PrintService implements IPrintService {
     private state: IState;

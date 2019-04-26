@@ -1,9 +1,5 @@
-import ICommand from '@/models/ICommand';
-import IInputService from '@/services/IInputService';
-import IAudioService from '@/services/IAudioService';
-import IPrintService from '@/services/IPrintService';
-import IState from '@/models/IState';
-import Vue from 'vue';
+import { ICommand, IState } from '@/models';
+import { IInputService, IAudioService, IPrintService } from '@/services';
 
 export default class InputService implements IInputService {
     private state: IState;

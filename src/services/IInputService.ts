@@ -1,5 +1,4 @@
-import ICommand from '@/models/ICommand';
-import Vue from 'vue';
+import { ICommand } from '@/models';
 
 export default interface IInputService {
     handleInput(input: string): void;

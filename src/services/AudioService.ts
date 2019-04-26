@@ -1,5 +1,5 @@
-import IAudioService from '@/services/IAudioService';
-import ICommand from '@/models/ICommand';
+import { IAudioService } from '@/services';
+import { ICommand } from '@/models';
 
 export default class AudioService implements IAudioService {
     public play(command: ICommand) {
