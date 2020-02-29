@@ -4,6 +4,19 @@
         "text": "You are sitting in a cafe.",
         "commands": [
             {
+                "input": "j",
+                "goTo": 1,
+                "sounds": [
+                    "LOOPbackgroundcafenoise.mp3"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "text": "You are sitting in a cafe.",
+        "commands": [
+            {
                 "input": "sip drink",
                 "goTo": 10,
                 "sounds": [
