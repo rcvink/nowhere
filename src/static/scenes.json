@@ -2,19 +2,7 @@
     {
         "id": 0,
         "text": "You are sitting in a cafe.",
-        "commands": [
-            {
-                "input": "j",
-                "goTo": 1,
-                "sounds": [
-                    "LOOPbackgroundcafenoise.mp3"
-                ]
-            }
-        ]
-    },
-    {
-        "id": 1,
-        "text": "You are sitting in a cafe.",
+        "sound": "LOOPbackgroundcafenoise.mp3",
         "commands": [
             {
                 "input": "sip drink",
@@ -44,6 +32,7 @@
     {
         "id": 10,
         "text": "You sip your drink.",
+        "sound": null,
         "commands": [
             {
                 "input": "sip drink",
@@ -73,6 +62,7 @@
     {
         "id": 20,
         "text": "The final moult of the nymph is not to the full adult form, but to a winged stage called a subimago that physically resembles the adult, although it is usually sexually immature and duller in colour. The subimago often has partially cloudy wings fringed with minute hairs; its eyes, legs and genitalia are not fully developed. Subimagos are generally poor fliers, and typically lack the colour patterns used to attract mates. After a period, usually lasting one or two days but in some species only a few minutes, the subimago moults to the full adult form, making mayflies the only insects in which a winged form undergoes a further moult.",
+        "sound": null,
         "commands": [
             {
                 "input": "close book",
@@ -94,6 +84,7 @@
     {
         "id": 21,
         "text": "Often, all the mayflies in a population mature at once (a hatch), and for a couple of days in the spring or autumn, mayflies are everywhere, dancing around each other in large groups, or resting on every available surface. In many species the emergence is synchronised with dawn or dusk, and light intensity seems to be an important cue for emergence, but other factors may also be involved. Baetis intercalaris, for example, usually emerges just after sunset in July and August, but in one year, a large hatch was observed at midday in June.",
+        "sound": null,
         "commands": [
             {
                 "input": "close book",
@@ -114,6 +105,7 @@
     {
         "id": 22,
         "text": "The soft-bodied subimagos are very attractive to predators. Synchronous emergence is probably an adaptive strategy that reduces the individual's risk of being eaten. The lifespan of an adult mayfly is very short, varying with the species. The primary function of the adult is reproduction; adults do not feed, and have only vestigial (unusable) mouthparts, while their digestive systems are filled with air. Dolania americana has the shortest adult lifespan of any mayfly: the adult females of the species live for less than five minutes.",
+        "sound": null,
         "commands": [
             {
                 "input": "close book",
@@ -134,6 +126,7 @@
     {
         "id": 23,
         "text": "Male adults may patrol individually, but most congregate in swarms a few metres above water with clear open sky above it, and perform a nuptial (courtship) dance. Each insect has a characteristic up-and-down pattern of movement; strong wingbeats propel it upwards and forwards with the tail sloping down; when it stops moving its wings, it falls passively with the abdomen tilted upwards. Females fly into these swarms, and mating takes place in the air. A rising male clasps the thorax of a female from below using his front legs bent upwards, and inseminates her. Copulation may last just a few seconds, but occasionally a pair remains in tandem and flutters to the ground. Males may spend the night in vegetation and return to the nuptial dance the following day. Although they do not feed, some briefly touch the surface to drink a little water before flying off.",
+        "sound": null,
         "commands": [
             {
                 "input": "close book",
@@ -148,6 +141,7 @@
     {
         "id": 30,
         "text": "You drop your phone.",
+        "sound": null,
         "commands": [
             {
                 "input": "leave phone",
@@ -175,6 +169,7 @@
     {
         "id": 40,
         "text": "You leave your phone.",
+        "sound": null,
         "commands": [
             {
                 "input": "exit cafe",
@@ -188,6 +183,7 @@
     {
         "id": 41,
         "text": "You collect your phone.",
+        "sound": null,        
         "commands": [
             {
                 "input": "exit cafe",
@@ -201,6 +197,7 @@
     {
         "id": 42,
         "text": "#!@#.",
+        "sound": null,        
         "commands": [
             {
                 "input": "exit cafe",
@@ -214,6 +211,7 @@
     {
         "id": 100,
         "text": "You're standing in the street.",
+        "sound": null,        
         "commands": [
             {
                 "input": "park",
@@ -234,6 +232,7 @@
     {
         "id": 200,
         "text": "You're in the park.",
+        "sound": null,        
         "commands": [
             {
                 "input": "bench",
@@ -254,6 +253,7 @@
     {
         "id": 201,
         "text": "You are sat in the corner of a park.",
+        "sound": null,        
         "commands": [
             {
                 "input": "stay",
@@ -273,6 +273,7 @@
     {
         "id": 210,
         "text": "There is a person walking towards you from the other side of the park.",
+        "sound": null,        
         "commands": [
             {
                 "input": "continue",
@@ -286,6 +287,7 @@
     {
         "id": 211,
         "text": "They are closer.",
+        "sound": null,        
         "commands": [
             {
                 "input": "continue",
@@ -299,6 +301,7 @@
     {
         "id": 212,
         "text": "\"Hey\"",
+        "sound": null,        
         "commands": [
             {
                 "input": "respond",
@@ -326,6 +329,7 @@
     {
         "id": 220,
         "text": "\"Not bad, how are you?\"",
+        "sound": null,        
         "commands": [
             {
                 "input": "respond",
@@ -353,6 +357,7 @@
     {
         "id": 221,
         "text": "\"...\"",
+        "sound": null,        
         "commands": [
             {
                 "input": "respond",
@@ -366,6 +371,7 @@
     {
         "id": 222,
         "text": "\"I said, hey\"",
+        "sound": null,        
         "commands": [
             {
                 "input": "respond",
@@ -379,6 +385,7 @@
     {
         "id": 230,
         "text": "\"Sounds good man, I really should be going.\"",
+        "sound": null,        
         "commands": [
             {
                 "input": "say nothing",
@@ -399,6 +406,7 @@
     {
         "id": 240,
         "text": "You continue on your path until you find a nice place to sit.",
+        "sound": null,        
         "commands": [
             {
                 "input": "sit",
@@ -412,6 +420,7 @@
     {
         "id": 300,
         "text": "You are heading home.",
+        "sound": null,        
         "commands": [
             {
                 "input": "quiet route",
@@ -439,6 +448,7 @@
     {
         "id": 301,
         "text": "\"Where are you?\"",
+        "sound": null,        
         "commands": [
             {
                 "input": "nowhere",
@@ -465,6 +475,7 @@
     {
         "id": 302,
         "text": "You are heading home.",
+        "sound": null,        
         "commands": [
             {
                 "input": "quiet route",
@@ -485,6 +496,7 @@
     {
         "id": 400,
         "text": "You are outside your house.",
+        "sound": null,        
         "commands": [
             {
                 "input": "tap front pocket",
@@ -512,6 +524,7 @@
     {
         "id": 401,
         "text": "The end.",
+        "sound": null,        
         "commands": [
         ]
     }
