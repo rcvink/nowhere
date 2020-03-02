@@ -40,6 +40,13 @@ To lint and fix files:
 npm run lint
 ```
 
+To deploy to surge:
+```
+npm run build
+npm run surge
+// project: /home/roland/projects/nowhere/dist/
+// domain: nowhere-game.surge.sh
+```
 ## user stories
 
 ```
