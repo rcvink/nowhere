@@ -1,5 +1,5 @@
 <template>
-    <div class="terminal-container container terminal">
+    <div v-on:click.once="onClick" class="terminal-container container terminal">
         <History class="history-child"/>
         <Input class="input-child container input-container"/>
     </div>
@@ -22,9 +22,13 @@ export default Vue.extend({
     mounted() {
         Models.state.scenes = scenes;
         Models.state.scene = Models.state.scenes[0];
-        Services.audioService.playScene(Models.state.scene);
         Services.printService.printAnimated(Models.state.scene.text);
         Services.printService.printAnimated(Services.inputService.getValidInputs());
+    },
+    methods: {
+        onClick() {
+            Services.audioService.playScene(Models.state.scene);
+        },
     },
 });
 
