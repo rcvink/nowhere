@@ -11,6 +11,7 @@ import History from '@/components/History.vue';
 import Input from '@/components/Input.vue';
 import Models from '@/models';
 import Services from '@/services';
+const scenes = require('@/static/scenes');
 
 export default Vue.extend({
     name: 'Terminal',
@@ -19,6 +20,9 @@ export default Vue.extend({
         Input,
     },
     mounted() {
+        Models.state.scenes = scenes;
+        Models.state.scene = Models.state.scenes[0];
+        Services.audioService.playScene(Models.state.scene);
         Services.printService.printAnimated(Models.state.scene.text);
         Services.printService.printAnimated(Services.inputService.getValidInputs());
     },
