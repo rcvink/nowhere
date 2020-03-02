@@ -32,7 +32,7 @@
     {
         "id": 10,
         "text": "You sip your drink.",
-        "sound": null,
+        "sound": "LOOPbackgroundcafenoise.mp3",
         "commands": [
             {
                 "input": "sip drink",
@@ -211,7 +211,7 @@
     {
         "id": 100,
         "text": "You're standing in the street.",
-        "sound": null,        
+        "sound": "STOPLOOP",        
         "commands": [
             {
                 "input": "park",
