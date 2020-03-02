@@ -1,15 +1,26 @@
 import { IAudioService } from '@/services';
-import { ICommand, IScene } from '@/models';
+import { ICommand, IScene, IState } from '@/models';
 
 export default class AudioService implements IAudioService {
+    private state: IState;
+
+    constructor(state: IState) {
+        this.state = state;
+    }
+
     public playScene(scene: IScene) {
         try {
-            const path = require('./../assets/' + scene.sound);
-            const audio = new Audio(path);
-            if (scene.sound !== null && scene.sound !== undefined) {
+            if (scene.sound &&
+                scene.sound.includes('STOPLOOP') &&
+                this.state.loop) {
+                this.state.loop.pause();
+                this.state.loop = null;
+            } else if (scene.sound) {
+                const path = require('./../assets/' + scene.sound);
+                const audio = new Audio(path);
                 this.handleLoop(scene.sound, audio);
+                audio.play();
             }
-            audio.play();
         } catch (error) {
             return;
         }
@@ -31,6 +42,7 @@ export default class AudioService implements IAudioService {
     private handleLoop(soundName: string, audio: HTMLAudioElement) {
         if (soundName.includes('LOOP')) {
             audio.loop = true;
+            this.state.loop = audio;
         }
     }
 }
