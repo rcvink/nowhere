@@ -14,7 +14,6 @@ export default class AudioService implements IAudioService {
                 scene.sound.includes('STOPLOOP') &&
                 this.state.loop) {
                 this.state.loop.pause();
-                this.state.loop = null;
             } else if (scene.sound) {
                 const path = require('./../assets/' + scene.sound);
                 const audio = new Audio(path);
@@ -41,6 +40,9 @@ export default class AudioService implements IAudioService {
 
     private handleLoop(soundName: string, audio: HTMLAudioElement) {
         if (soundName.includes('LOOP')) {
+            if (this.state.loop) {
+                this.state.loop.pause();
+            }
             audio.loop = true;
             this.state.loop = audio;
         }
