@@ -6,4 +6,5 @@ export default class State implements IState {
     public scene!: IScene;
     public statements: string[] = [];
     public printChain: Promise<{}> = Promise.resolve({});
+    public loop!: HTMLAudioElement;
 }
