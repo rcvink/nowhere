@@ -1,4 +1,4 @@
-import { ICommand, IState } from '@/models';
+import { IState } from '@/models';
 import { IInputService, IAudioService, IPrintService } from '@/services';
 
 export default class InputService implements IInputService {
@@ -18,9 +18,10 @@ export default class InputService implements IInputService {
     public handleInput(input: string) {
         if (this.isValidInput(input)) {
             const command = this.getCommand(input);
-            this.setScene(command.goTo);
             this.printService.printInstantly(input);
             this.audioService.play(command);
+            this.setScene(command.goTo);
+            this.audioService.playScene(this.state.scene);
             this.printService.printAnimated(this.state.scene.text);
             this.printService.printAnimated(this.getValidInputs());
         }
