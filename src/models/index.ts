@@ -1,7 +1,6 @@
 import State from './State';
-import scenes from '@/static/scenes.json';
 
-const state = new State(scenes);
+const state = new State();
 
 export default {
     state,

@@ -31,7 +31,6 @@ export default class PrintService implements IPrintService {
                 }
             });
         });
-
     }
 
     public printInstantly(statement: string) {

@@ -3,8 +3,10 @@ import InputService from './InputService';
 import PrintService from './PrintService';
 import Models from '../models';
 
-const audioService = new AudioService();
-const printService = new PrintService(Models.state);
+const audioService = new AudioService(
+    Models.state);
+const printService = new PrintService(
+    Models.state);
 const inputService = new InputService(
     Models.state,
     printService,

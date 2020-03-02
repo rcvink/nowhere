@@ -5,4 +5,5 @@ export default interface IState {
     scenes: IScene[];
     statements: string[];
     printChain: Promise<{}>;
+    loop: HTMLMediaElement | null;
 }
