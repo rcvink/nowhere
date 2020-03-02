@@ -32,7 +32,7 @@
     {
         "id": 10,
         "text": "You sip your drink.",
-        "sound": "LOOPbackgroundcafenoise.mp3",
+        "sound": null,
         "commands": [
             {
                 "input": "sip drink",
