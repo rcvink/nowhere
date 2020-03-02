@@ -11,7 +11,7 @@ import History from '@/components/History.vue';
 import Input from '@/components/Input.vue';
 import Models from '@/models';
 import Services from '@/services';
-const scenes = require('@/static/scenes');
+const scenes = require('../static/scenes.json');
 
 export default Vue.extend({
     name: 'Terminal',
