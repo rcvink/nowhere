@@ -35,7 +35,7 @@ export default class InputService implements IInputService {
     private isValidInput = (userInput: string) =>
         this.state.scene.commands
             .some((x) =>
-                stringSimilarity.compareTwoStrings(userInput, x.input) > InputService.similarity)
+                stringSimilarity.compareTwoStrings(userInput.toLowerCase(), x.input) > InputService.similarity)
 
     private setScene = (newSceneId: number) => {
         const newScene = this.state.scenes.find((x) => x.id === newSceneId);
