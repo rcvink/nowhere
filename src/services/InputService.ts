@@ -19,7 +19,7 @@ export default class InputService implements IInputService {
         if (this.isValidInput(input)) {
             const command = this.getCommand(input);
             this.printService.printInstantly(input);
-            this.audioService.play(command);
+            this.audioService.playCommand(command);
             this.setScene(command.goTo);
             this.audioService.playScene(this.state.scene);
             this.printService.printAnimated(this.state.scene.text);

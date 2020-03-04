@@ -25,7 +25,7 @@ export default class AudioService implements IAudioService {
         }
     }
 
-    public play(command: ICommand) {
+    public playCommand(command: ICommand) {
         try {
             command.sounds.forEach((soundName) => {
                 const path = require('./../assets/' + soundName);
