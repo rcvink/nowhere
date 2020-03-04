@@ -4,8 +4,10 @@ import {
     IAudioService,
     IPrintService,
 } from '@/services';
+import stringSimilarity from 'string-similarity';
 
 export default class InputService implements IInputService {
+    private static readonly similarity = 0.9;
     private state: IState;
     private printService: IPrintService;
     private audioService: IAudioService;
@@ -30,10 +32,10 @@ export default class InputService implements IInputService {
         }
     }
 
-    private isValidInput = (input: string) =>
+    private isValidInput = (userInput: string) =>
         this.state.scene.commands
-            .map((x) => x.input)
-            .includes(input.toLowerCase())
+            .some((x) =>
+                stringSimilarity.compareTwoStrings(userInput, x.input) > InputService.similarity)
 
     private setScene = (newSceneId: number) => {
         const newScene = this.state.scenes.find((x) => x.id === newSceneId);
@@ -42,9 +44,12 @@ export default class InputService implements IInputService {
         }
     }
 
-    private getCommand = (input: string) =>
+    private getCommand = (userInput: string) =>
         this.state.scene.commands
             .find((command) =>
-                command.input === input.toLowerCase()) ||
+                this.areStringsSimilar(userInput, command.input)) ||
                 this.state.scene.commands[0]
+
+    private areStringsSimilar = (userInput: string, correctInput: string) =>
+        stringSimilarity.compareTwoStrings(userInput, correctInput) > InputService.similarity
 }
