@@ -1,4 +1,6 @@
+import { IScene } from '@/models';
+
 export default interface IPrintService {
-    printAnimated(statement: string): void;
-    printInstantly(statement: string): void;
+    printUserInput(input: string): void;
+    printScene(scene: IScene): void;
 }

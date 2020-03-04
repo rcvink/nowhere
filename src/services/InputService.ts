@@ -1,5 +1,9 @@
 import { IState } from '@/models';
-import { IInputService, IAudioService, IPrintService } from '@/services';
+import {
+    IInputService,
+    IAudioService,
+    IPrintService,
+} from '@/services';
 
 export default class InputService implements IInputService {
     private state: IState;
@@ -15,40 +19,31 @@ export default class InputService implements IInputService {
         this.audioService = audioService;
     }
 
-    public handleInput(input: string) {
+    public handleInput = (input: string) => {
         if (this.isValidInput(input)) {
             const command = this.getCommand(input);
-            this.printService.printInstantly(input);
+            this.printService.printUserInput(input);
             this.audioService.playCommand(command);
             this.setScene(command.goTo);
             this.audioService.playScene(this.state.scene);
-            this.printService.printAnimated(this.state.scene.text);
-            this.printService.printAnimated(this.getValidInputs());
+            this.printService.printScene(this.state.scene);
         }
     }
 
-    public getValidInputs() {
-        return this.state.scene.commands
+    private isValidInput = (input: string) =>
+        this.state.scene.commands
             .map((x) => x.input)
-            .join(' | ');
-    }
-
-    private isValidInput(input: string) {
-        return this.state.scene.commands
-            .map((x) => x.input)
-            .includes(input.toLowerCase());
-    }
-
-    private setScene(newSceneId: number) {
+            .includes(input.toLowerCase())
+    private setScene = (newSceneId: number) => {
         const newScene = this.state.scenes.find((x) => x.id === newSceneId);
         if (newScene !== undefined) {
             this.state.scene = newScene;
         }
     }
 
-    private getCommand(input: string) {
-        return this.state.scene.commands
-            .find((command) => command.input === input.toLowerCase()) ||
-            this.state.scene.commands[0];
-    }
+    private getCommand = (input: string) =>
+        this.state.scene.commands
+            .find((command) =>
+                command.input === input.toLowerCase()) ||
+                this.state.scene.commands[0]
 }

@@ -22,8 +22,7 @@ export default Vue.extend({
     mounted() {
         Models.state.scenes = scenes;
         Models.state.scene = Models.state.scenes[0];
-        Services.printService.printAnimated(Models.state.scene.text);
-        Services.printService.printAnimated(Services.inputService.getValidInputs());
+        Services.printService.printScene(Models.state.scene);
     },
     methods: {
         onClick() {
