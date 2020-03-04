@@ -34,6 +34,7 @@ export default class InputService implements IInputService {
         this.state.scene.commands
             .map((x) => x.input)
             .includes(input.toLowerCase())
+
     private setScene = (newSceneId: number) => {
         const newScene = this.state.scenes.find((x) => x.id === newSceneId);
         if (newScene !== undefined) {
