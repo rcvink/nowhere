@@ -6,4 +6,5 @@ export default interface IState {
     statements: string[];
     printChain: Promise<{}>;
     loop: HTMLMediaElement | null;
+    audioChain: Promise<{}>;
 }

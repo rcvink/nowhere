@@ -8,37 +8,42 @@ export default class AudioService implements IAudioService {
         this.state = state;
     }
 
-    public playScene(scene: IScene) {
-        try {
-            if (scene.sound &&
-                scene.sound.includes('STOPLOOP') &&
-                this.state.loop) {
-                this.state.loop.pause();
-            } else if (scene.sound) {
-                const path = require('./../assets/' + scene.sound);
-                const audio = new Audio(path);
-                this.handleLoop(scene.sound, audio);
-                audio.play();
-            }
-        } catch (error) {
-            return;
+    public playScene = (scene: IScene) => {
+        if (scene.sound &&
+            scene.sound.includes('STOPLOOP') &&
+            this.state.loop) {
+            this.state.loop.pause();
+        } else if (scene.sound) {
+            this.play(scene.sound);
         }
     }
 
-    public playCommand(command: ICommand) {
-        try {
-            command.sounds.forEach((soundName) => {
-                const path = require('./../assets/' + soundName);
-                const audio = new Audio(path);
-                this.handleLoop(soundName, audio);
-                audio.play();
-            });
-        } catch (error) {
-            return;
-        }
+    public playCommand = (command: ICommand) => {
+        command.sounds.forEach((soundName) => {
+            this.playSequentially(soundName);
+        });
     }
 
-    private handleLoop(soundName: string, audio: HTMLAudioElement) {
+    private playSequentially = (soundName: string) => {
+        this.state.audioChain = this.state.audioChain.then(() =>
+            new Promise((resolve) => {
+                const audio = this.play(soundName);
+                audio.onended = () => resolve();
+            }),
+        );
+    }
+
+    private play = (soundName: string) => {
+        const path = require('./../assets/' + soundName);
+        const audio = new Audio(path);
+        this.handleLoop(soundName, audio);
+        audio.play();
+        return audio;
+    }
+
+    private handleLoop = (
+        soundName: string,
+        audio: HTMLAudioElement) => {
         if (soundName.includes('LOOP')) {
             if (this.state.loop) {
                 this.state.loop.pause();
