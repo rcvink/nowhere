@@ -22,8 +22,9 @@ export default class InputService implements IInputService {
     }
 
     public handleInput = (input: string) => {
-        if (this.isValidInput(input)) {
-            const command = this.getCommand(input);
+        const lowerInput = input.toLowerCase();
+        if (this.isValidInput(lowerInput)) {
+            const command = this.getCommand(lowerInput);
             this.printService.printUserInput(input);
             this.audioService.playCommand(command);
             this.setScene(command.goTo);
@@ -35,7 +36,7 @@ export default class InputService implements IInputService {
     private isValidInput = (userInput: string) =>
         this.state.scene.commands
             .some((x) =>
-                stringSimilarity.compareTwoStrings(userInput.toLowerCase(), x.input) > InputService.similarity)
+                stringSimilarity.compareTwoStrings(userInput, x.input) > InputService.similarity)
 
     private setScene = (newSceneId: number) => {
         const newScene = this.state.scenes.find((x) => x.id === newSceneId);
