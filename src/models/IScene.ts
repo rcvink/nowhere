@@ -2,7 +2,7 @@ import ICommand from '@/models/ICommand';
 
 export default interface IScene {
     id: number;
-    sound?: string;
+    sounds?: string[];
     text: string;
     commands: ICommand[];
   }

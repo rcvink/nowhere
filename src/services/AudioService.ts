@@ -9,19 +9,21 @@ export default class AudioService implements IAudioService {
     }
 
     public playScene = (scene: IScene) => {
-        if (scene.sound &&
-            scene.sound.includes('STOPLOOP') &&
+        if (scene.sounds &&
+            scene.sounds.includes('STOPLOOP') &&
             this.state.loop) {
             this.state.loop.pause();
-        } else if (scene.sound) {
-            this.play(scene.sound);
+        } else if (scene.sounds) {
+            scene.sounds.forEach((soundName) =>
+                this.playSequentially(soundName),
+            );
         }
     }
 
     public playCommand = (command: ICommand) => {
-        command.sounds.forEach((soundName) => {
-            this.playSequentially(soundName);
-        });
+        command.sounds.forEach((soundName) => 
+            this.playSequentially(soundName),
+        );
     }
 
     private playSequentially = (soundName: string) => {
